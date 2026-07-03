@@ -1,0 +1,6 @@
+node_modules/
+output.pdf
+output.html
+*.log
+.DS_Store
+examples/_preview.html

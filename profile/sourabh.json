@@ -1,0 +1,194 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-03",
+  "source_of_truth": "Single JSON consumed by all installed resume skills (paramchoudhary/resumeskills) and the local resume-builder dispatcher.",
+  "identity": {
+    "name": "Sourabh Bhaumik",
+    "preferred_name": "Sourabh",
+    "headline": "Founder & CEO | IT Services, Field Operations & AI Transformation",
+    "headline_alternates": [
+      "Founder & CEO | IT Services & FinTech Operations Leader | AI Transformation Generalist",
+      "Serial Entrepreneur | Business Strategist | Technology & Operations Leader",
+      "Entrepreneur | AI Generalist | System Integration & Field Operations Specialist"
+    ],
+    "location": "Kolkata, West Bengal, India",
+    "email": "srksourabh@gmail.com",
+    "phone": "+91 98367 19911",
+    "linkedin": null,
+    "linkedin_note": "URL pending confirmation"
+  },
+  "summary": {
+    "short": "Kolkata-based founder and serial entrepreneur with experience scaling IT services, field operations, and digital transformation businesses across India.",
+    "long": "Kolkata-based founder and serial entrepreneur with experience across IT services, system integration, field operations, data centre operations, POS deployment, e-governance, cab aggregation, creative industries, and social impact initiatives. Co-founder and CEO of Ultimate Digital Solutions (UDS), a multi-domain IT and operations company that crossed the ₹10 crore turnover milestone. Currently leading AI transformation initiatives for traditional service operations. B.Tech in Computer Science; SAP ABAP certified."
+  },
+  "career_objective": "To build, lead, and scale technology-driven businesses that solve real operational problems for enterprises, institutions, and consumers, while combining IT services, AI transformation, field execution, automation, and human-centric service delivery.",
+  "current_roles": [
+    {
+      "company": "Ultimate Digital Solutions Pvt. Ltd. (UDS)",
+      "title": "Co-founder & CEO / Managing Director",
+      "location": "Kolkata, India",
+      "start": null,
+      "end": "Present",
+      "dates_note": "Founding year pending confirmation",
+      "industry": "IT services, system integration, field operations, POS, data centre O&M, e-governance, digital transformation",
+      "highlights": [
+        "Built and scaled UDS into a multi-service company across IT support, system integration, data centre O&M, POS deployment, field manpower, e-governance, electrical, and digital transformation.",
+        "Achieved the ₹10 crore (₹100 million) turnover milestone in the early growth phase.",
+        "Led pan-India service delivery across multiple Indian states, managing field teams, vendors, and large-scale deployment projects including government-linked digitization work involving thousands of resources.",
+        "Developed product concepts: FieldConnect (field engineer tracking, call assignment, stock movement, attendance, MIS) and PosBuddy (POS device stock, install/service calls, engineer allocation, merchant support, service reporting).",
+        "Owned enterprise client relationships, proposal development, sales, and strategic partnerships.",
+        "Leading AI transformation planning for internal operations and traditional service businesses."
+      ]
+    },
+    {
+      "company": "Goldenframe Talkies Pvt. Ltd.",
+      "title": "Director",
+      "location": "Kolkata, India",
+      "start": null,
+      "end": "Present",
+      "dates_note": "Dates pending confirmation",
+      "industry": "Film, media, creative production",
+      "highlights": [
+        "Film, media, and creative production reflecting involvement in theatre, storytelling, performance, and visual creativity."
+      ]
+    },
+    {
+      "company": "Project Paco Foundation",
+      "title": "Chairman",
+      "location": "Kolkata, India",
+      "start": null,
+      "end": "Present",
+      "dates_note": "Dates pending confirmation",
+      "industry": "Social impact, environment, peace, community",
+      "highlights": [
+        "Social impact NGO focused on environmental awareness, peace, sustainability, and community-oriented initiatives."
+      ]
+    },
+    {
+      "company": "Aaocab",
+      "title": "Co-founder & Director",
+      "location": "Kolkata, India",
+      "start": null,
+      "end": "Present",
+      "dates_note": "Dates pending confirmation",
+      "industry": "Mobility, outstation cab services",
+      "highlights": [
+        "Human-assisted outstation cab service with phone/WhatsApp-based booking for families, patients, senior citizens, and non-app users. Pan-India travel service vision; vendor and driver onboarding; booking, invoicing, and service coordination."
+      ]
+    }
+  ],
+  "achievements": [
+    "Co-founded and scaled Ultimate Digital Solutions Pvt. Ltd.",
+    "Achieved ₹10 crore / ₹100 million turnover milestone within the early growth phase of UDS.",
+    "Led or contributed to large-scale deployment-oriented projects involving field manpower and digital operations.",
+    "Associated with projects involving thousands of resources in government-linked digitization work.",
+    "Built operational presence and service capability across multiple Indian states.",
+    "Developed product concepts such as FieldConnect and PosBuddy for field operations and POS service management.",
+    "Launched or participated in three startups and one NGO initiative.",
+    "Received Top 50 Emerging Startup in India Award.",
+    "MSME business recognition from Bengal Chamber of Commerce & Industry.",
+    "UDS: SME, emerging-IT, and entrepreneurship-related recognitions.",
+    "84% in SAP ABAP certification test in 2008, one of the highest scores in India at that time.",
+    "Completed Annapurna Base Camp summit in October 2023."
+  ],
+  "education": [
+    {
+      "degree": "B.Tech",
+      "field": "Computer Science",
+      "institution": null,
+      "year": null,
+      "note": "University and graduation year pending confirmation"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "SAP Certified Global Consultant — ABAP",
+      "year": 2008,
+      "score": "84%",
+      "note": "Recognized as one of the highest scores in India at that time"
+    }
+  ],
+  "core_competencies": {
+    "business_leadership": [
+      "Entrepreneurship", "Business strategy", "Company building", "Revenue growth",
+      "Market expansion", "Business model design", "Strategic partnerships",
+      "Client relationship management", "Proposal development", "Negotiation",
+      "Vendor management", "Financial decision-making"
+    ],
+    "operations_management": [
+      "Field operations", "Pan-India manpower deployment", "Service delivery management",
+      "POS rollout and support", "Call allocation and tracking", "SLA management",
+      "Inventory and stock tracking", "Workforce planning", "Data centre O&M coordination",
+      "Multi-state execution", "MIS and reporting"
+    ],
+    "technology_and_ai": [
+      "IT services", "System integration", "Cloud computing", "Digital transformation",
+      "Cybersecurity awareness", "Network architecture understanding",
+      "Application development planning", "CRM integration", "Data management",
+      "AI adoption", "Business process automation", "SaaS product ideation",
+      "Workflow automation"
+    ],
+    "product_and_innovation": [
+      "Product concept development", "SaaS planning", "Field operations software",
+      "POS management software", "Human-assisted service design", "Customer journey design",
+      "AI-enabled operations", "MVP planning", "Service-product conversion",
+      "Non-technical product leadership"
+    ],
+    "sales_and_marketing": [
+      "Enterprise sales", "B2B proposal writing", "Client acquisition",
+      "Service positioning", "Brand communication", "Pitch deck preparation",
+      "Investor communication", "LinkedIn outreach", "Market research",
+      "Lead generation strategy"
+    ],
+    "creative_and_cultural": [
+      "Theatre", "Acting", "Photography", "Road trips and travel storytelling",
+      "Film and media interest", "Cultural project development", "Visual storytelling",
+      "Community engagement"
+    ]
+  },
+  "products_conceptualised": [
+    {
+      "name": "FieldConnect",
+      "type": "Field manpower and operations management",
+      "scope": [
+        "Field engineer tracking", "Call assignment", "Stock movement",
+        "Attendance and reporting", "Service status tracking",
+        "Operational MIS", "Client-facing transparency"
+      ]
+    },
+    {
+      "name": "PosBuddy",
+      "type": "POS-focused operational product",
+      "scope": [
+        "POS device stock tracking", "Installation and service calls",
+        "Engineer allocation", "Device movement", "Merchant support flow",
+        "Service reporting and MIS"
+      ]
+    }
+  ],
+  "awards": [
+    "Top 50 Emerging Startup in India Award",
+    "MSME Business Award — Bengal Chamber of Commerce & Industry",
+    "UDS: SME, emerging-IT, and entrepreneurship-related recognitions",
+    "SAP ABAP certification score of 84% in 2008 (one of the highest in India at that time)"
+  ],
+  "memberships": [
+    "Bengal Chamber of Commerce & Industry",
+    "Newtown Business Club",
+    "Servas International"
+  ],
+  "interests": [
+    "Theatre", "Acting", "Photography", "Road trips and travel storytelling",
+    "Film and media", "Cultural projects", "Visual storytelling",
+    "Community engagement", "Endurance trekking (Annapurna Base Camp, Oct 2023)"
+  ],
+  "personal_brand_statement": "I am a founder and business builder focused on solving practical operational problems through technology, people, process, and execution. My journey spans IT services, field operations, POS deployment, data centre support, cab services, creative production, and social impact. I believe in building businesses that are scalable, trusted, human-centric, and ready for the AI-driven future.",
+  "pending_confirmations": [
+    "UDS founding year and tenure dates",
+    "Goldenframe, Paco, Aaocab dates",
+    "B.Tech university and graduation year",
+    "LinkedIn profile URL",
+    "Phone / email final values",
+    "Goldenframe Talkies productions, Paco campaigns/metrics"
+  ]
+}

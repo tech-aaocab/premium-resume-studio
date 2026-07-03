@@ -1,0 +1,21 @@
+{
+  "name": "premium-resume-studio",
+  "version": "1.0.0",
+  "description": "Generate a premium, magazine-style PDF resume from a JSON profile (HTML + CSS + Playwright/Chromium).",
+  "main": "scripts/build_stunning_pdf.js",
+  "bin": {
+    "premium-resume": "scripts/build_stunning_pdf.js"
+  },
+  "scripts": {
+    "build": "node scripts/build_stunning_pdf.js --profile profile/sourabh.json --out output.pdf",
+    "build:html": "node scripts/build_stunning_pdf.js --profile profile/sourabh.json --out output.pdf --html"
+  },
+  "keywords": ["resume", "cv", "pdf", "playwright", "chromium", "agent-skill", "claude", "gemini"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "playwright": "^1.60.0"
+  }
+}
