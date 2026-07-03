@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="hz:canvas-width" content="794">
+<title>Sourabh Bhaumik — Resume</title>
+<style>:root{
+  --ink:#16202f; --ink-soft:#59647a; --bg:#ffffff; --surface:#f5f7fb; --hairline:#e2e8f2;
+  --side-from:#0b1e39; --side-via:#12365f; --side-to:#1f4f8a;
+  --side-ink:#eef3fb; --side-muted:#b9cae2;
+  --accent:#f0b34e; --accent-rgb:240,179,78; --accent-deep:#cf8a34;
+  --accent-text:#0b1e39; --hero-ink:#fbe2b4;
+}
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter','Segoe UI','Helvetica Neue',Arial,'Liberation Sans',system-ui,sans-serif;
+    color:var(--ink); background:var(--bg);
+    -webkit-font-smoothing:antialiased; font-size:10pt; line-height:1.45;
+  }
+  @page{ size:A4; margin:0; }
+  .sheet{ width:210mm; min-height:297mm; background:var(--bg); position:relative; }
+  h1,h2,h3,h4{ margin:0; }
+  ul{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  .ic{ vertical-align:-0.14em; flex-shrink:0; }
+  .pills{ display:flex; flex-wrap:wrap; gap:1.4mm; }
+  .pill{
+    background:rgba(var(--accent-rgb),0.10); color:var(--accent-deep);
+    border:1px solid rgba(var(--accent-rgb),0.28);
+    padding:1mm 2.6mm; border-radius:12px; font-size:7.8pt; line-height:1.25; white-space:nowrap;
+  }
+  .accent{ color:var(--accent-deep); }
+  .muted{ color:var(--ink-soft); }
+  section{ break-inside:avoid; }
+  /* Sidebar shell (used by two-column templates) */
+  .aside{
+    background:linear-gradient(160deg,var(--side-from) 0%,var(--side-via) 55%,var(--side-to) 100%);
+    color:var(--side-ink); position:relative; overflow:hidden;
+  }
+  .aside::after{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background-image:
+      radial-gradient(circle at 85% 8%, rgba(var(--accent-rgb),0.16), transparent 45%),
+      linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+    background-size:auto, 7px 7px, 7px 7px;
+  }
+  .aside > *{ position:relative; z-index:1; }
+  .monogram{
+    width:60px;height:60px;border-radius:16px;
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-deep) 100%);
+    color:var(--accent-text); display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:20pt;letter-spacing:.5px;
+    box-shadow:0 6px 20px rgba(var(--accent-rgb),0.35);
+  }
+  .side-h{
+    font-size:7.5pt;text-transform:uppercase;letter-spacing:1.7px;color:var(--accent);
+    font-weight:700;margin:0 0 2.5mm 0;padding-bottom:1.4mm;display:flex;align-items:center;gap:1.6mm;
+    border-bottom:1px solid rgba(var(--accent-rgb),0.42);
+  }
+  .side-sec{ margin-bottom:5.5mm; }
+  .contact-row{ display:flex; align-items:center; gap:2.4mm; font-size:8.6pt; margin-bottom:1.8mm; color:var(--side-ink); }
+  .contact-row .ic{ color:var(--accent); }
+  .side-line{ font-size:8.7pt; margin-bottom:1.4mm; color:var(--side-ink); }
+  .side-line strong{ color:#fff; font-weight:700; }
+  .aside .pill{ background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.2); color:var(--side-ink); }
+  /* Main column primitives */
+  .sec-title{
+    font-size:11pt;color:var(--ink);text-transform:uppercase;letter-spacing:1.3px;font-weight:800;
+    margin:0 0 3mm 0;padding-bottom:1.4mm;border-bottom:2px solid var(--hairline);
+    display:flex;align-items:center;gap:2mm;
+  }
+  .sec-title .ic{ color:var(--accent-deep); }
+  .sec-title .tick{ color:var(--accent-deep); font-weight:900; }
+  .lede{
+    font-size:10.2pt;line-height:1.55;color:var(--ink);
+    background:linear-gradient(90deg,rgba(var(--accent-rgb),0.12) 0%,rgba(var(--accent-rgb),0) 100%);
+    border-left:3px solid var(--accent);padding:3.5mm 4.5mm;border-radius:0 5px 5px 0;
+  }
+  .metrics{ display:grid; grid-template-columns:repeat(var(--mcols,4),1fr); gap:2.6mm; }
+  .metric{ background:var(--surface); border-radius:6px; padding:2.8mm 3mm; border-bottom:2.5px solid var(--accent-deep); }
+  .metric .n{ font-size:13pt; font-weight:800; color:var(--ink); line-height:1.05; letter-spacing:-.4px; word-break:keep-all; }
+  .metric .l{ font-size:7pt; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.4px; margin-top:1.4mm; line-height:1.25; }
+  
+  .sheet{ display:grid; grid-template-columns:68mm 1fr; }
+  .aside{ padding:13mm 9mm 12mm 11mm; }
+  .name{ font-size:17.5pt; font-weight:800; line-height:1.12; margin:6mm 0 1mm; letter-spacing:-.3px; }
+  .head{ font-size:8.8pt; font-weight:500; color:var(--side-muted); line-height:1.4; margin-bottom:6mm; }
+  main{ padding:13mm 12mm 12mm 10mm; }
+  .banner{ border-bottom:2.5px solid var(--side-from); padding-bottom:3.5mm; margin-bottom:4.5mm; display:flex; align-items:flex-end; justify-content:space-between; gap:6mm; }
+  .banner h1{ font-size:29pt; line-height:1; color:var(--ink); font-weight:800; letter-spacing:-.9px; }
+  .banner .role{ font-size:9pt; color:var(--accent-deep); font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-top:2mm; }
+  .banner .tag{ text-align:right; font-size:8pt; color:var(--ink-soft); line-height:1.4; max-width:46mm; }
+  .lede{ margin-bottom:5mm; }
+  .metrics{ margin-bottom:6mm; }
+  .block{ margin-bottom:5.5mm; }
+  .ventures{ display:flex; flex-direction:column; gap:3.5mm; }
+  .venture{ position:relative; padding-left:6mm; border-left:2px solid var(--hairline); }
+  .venture::before{ content:''; position:absolute; left:-3.4mm; top:1mm; width:4.6mm; height:4.6mm; border-radius:50%; background:var(--bg); border:2.4px solid var(--side-from); }
+  .venture.lead::before{ background:var(--accent); border-color:var(--accent-deep); }
+  .v-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:2mm 3mm; margin-bottom:1mm; }
+  .v-head h3{ font-size:11.5pt; color:var(--ink); font-weight:800; }
+  .v-head .r{ font-size:9pt; color:var(--accent-deep); font-weight:700; }
+  .v-head .d{ font-size:8pt; color:var(--ink-soft); margin-left:auto; white-space:nowrap; }
+  .v-meta{ font-size:7.8pt; color:var(--ink-soft); margin-bottom:1.5mm; }
+  .venture ul{ padding-left:4.5mm; font-size:9.2pt; color:var(--ink); }
+  .venture li{ margin-bottom:.8mm; }
+  .products{ display:grid; grid-template-columns:1fr 1fr; gap:3.5mm; }
+  .product{ background:var(--surface); border-radius:7px; padding:3.5mm 4mm; border-top:3px solid var(--accent-deep); }
+  .product h4{ color:var(--ink); font-size:10.5pt; font-weight:800; margin-bottom:.6mm; }
+  .product .t{ font-size:7.6pt; color:var(--accent-deep); font-weight:700; text-transform:uppercase; letter-spacing:.5px; margin-bottom:1.6mm; }
+  .product p{ font-size:8.4pt; color:var(--ink); line-height:1.45; }
+  .ach{ list-style:none; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:1.2mm 6mm; }
+  .ach li{ position:relative; padding-left:5mm; font-size:9pt; color:var(--ink); }
+  .ach li::before{ content:''; position:absolute; left:0; top:1.6mm; width:2.4mm; height:2.4mm; border-radius:50%; background:var(--accent); }
+  .earlier{ display:flex; flex-direction:column; gap:1mm; }
+  .early{ display:flex; align-items:baseline; gap:3mm; font-size:9pt; padding:1mm 0; border-bottom:1px dotted var(--hairline); }
+  .early .ec{ font-weight:700; color:var(--ink); min-width:52mm; }
+  .early .et{ color:var(--ink-soft); }
+  .early .ed{ margin-left:auto; font-size:8pt; color:var(--ink-soft); }
+  .brow{ display:grid; grid-template-columns:1fr 1fr; gap:6mm; }
+  .brow .item{ font-size:8.7pt; margin-bottom:1.2mm; color:var(--ink); }
+  .open-to{ background:linear-gradient(135deg,rgba(var(--accent-rgb),0.2),rgba(var(--accent-rgb),0.05)); border:1px solid rgba(var(--accent-rgb),0.4); border-radius:6px; padding:3.5mm 4mm; }
+  .open-to .side-h{ border-bottom-color:rgba(var(--accent-rgb),0.55); }
+  .open-to .txt{ font-size:8.6pt; line-height:1.5; color:var(--hero-ink); }
+</style>
+
+</head>
+<body>
+<div class="sheet">
+  <aside class="aside">
+    <div class="monogram">SB</div>
+    <div class="name">Sourabh Bhaumik</div>
+    <div class="head">Founder &amp; CEO | IT Services, Field Operations &amp; AI Transformation</div>
+
+    <div class="side-sec">
+      <h2 class="side-h"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M10 13a4 4 0 0 0 6 .5l2-2a4 4 0 0 0-5.7-5.7l-1.2 1.2M14 11a4 4 0 0 0-6-.5l-2 2A4 4 0 0 0 11.7 18l1.2-1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Contact</h2>
+      <div class="contact-row"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span>Kolkata, West Bengal, India</span></div><div class="contact-row"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M4 6h16v12H4z" fill="none"/><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5zM5 7l7 5 7-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>srksourabh@gmail.com</span></div><div class="contact-row"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M6.6 3h3l1.2 4-2 1.4a12 12 0 0 0 5 5l1.4-2 4 1.2v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5a2 2 0 0 1 2.1-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>+91 98367 19911</span></div><div class="contact-row"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill="currentColor"/><path d="M7 10v7M7 7.2v.1M11 17v-4a2 2 0 0 1 4 0v4M11 17v-7" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg><span>linkedin.com/in/srksourabh</span></div><div class="contact-row"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>sourabhbhaumik.com</span></div>
+    </div>
+
+    <div class="side-sec"><h2 class="side-h">Leadership</h2><div class="pills"><span class="pill">Entrepreneurship</span><span class="pill">Business strategy</span><span class="pill">Company building</span><span class="pill">P&amp;L ownership</span><span class="pill">Revenue growth</span><span class="pill">Market expansion</span></div></div><div class="side-sec"><h2 class="side-h">Operations</h2><div class="pills"><span class="pill">Field operations</span><span class="pill">Pan-India manpower deployment</span><span class="pill">Service delivery</span><span class="pill">POS rollout &amp; support</span><span class="pill">SLA management</span><span class="pill">Data-centre O&amp;M</span></div></div><div class="side-sec"><h2 class="side-h">Technology &amp; AI</h2><div class="pills"><span class="pill">IT services</span><span class="pill">System integration</span><span class="pill">Cloud computing</span><span class="pill">Digital transformation</span><span class="pill">AI adoption</span><span class="pill">Business-process automation</span></div></div><div class="side-sec"><h2 class="side-h">Product</h2><div class="pills"><span class="pill">Product concept development</span><span class="pill">SaaS planning</span><span class="pill">Field-operations software</span><span class="pill">POS management software</span><span class="pill">MVP planning</span><span class="pill">Service-to-product conversion</span></div></div>
+
+    <div class="side-sec"><h2 class="side-h"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M12 4l9 4-9 4-9-4z" fill="currentColor"/><path d="M6 10v4c0 1.6 2.7 3 6 3s6-1.4 6-3v-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg> Education</h2>
+      <div class="side-line"><strong>B.Tech</strong> — Computer Science &amp; Engineering<br><span class="muted" style="color:var(--side-muted)">West Bengal University of Technology (MAKAUT)</span></div></div>
+
+    <div class="side-sec"><h2 class="side-h"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><circle cx="12" cy="9" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 13l-1.5 7L12 18l4.5 2L15 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> Certifications</h2>
+      <div class="side-line"><strong>SAP Certified Consultant — ABAP</strong> (2008) — 84%</div></div>
+
+    <div class="side-sec"><h2 class="side-h"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z" fill="currentColor"/></svg> Memberships</h2>
+      <div class="side-line">Bengal Chamber of Commerce &amp; Industry</div><div class="side-line">Newtown Business Club</div><div class="side-line">Servas International</div></div>
+
+    <div class="side-sec"><h2 class="side-h"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18" fill="none" stroke="currentColor" stroke-width="1.3"/></svg> Languages</h2>
+      <div class="side-line">English · Hindi · Bengali</div></div>
+
+    <div class="side-sec open-to"><h2 class="side-h"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z" fill="currentColor"/></svg> Open To</h2>
+      <div class="txt">AI-led field-operations advisory · Board &amp; co-founder conversations · Strategic partnerships &amp; enterprise mandates</div></div>
+  </aside>
+
+  <main>
+    <div class="banner">
+      <div>
+        <h1>Sourabh Bhaumik</h1>
+        <div class="role">Founder &amp; CEO</div>
+      </div>
+      <div class="tag">“To build and scale technology-driven businesses that solve real operational problems for enterprises and institutions — combining IT services, AI transformation, field execution and human-centric delivery.”</div>
+    </div>
+
+    <div class="lede">Founder and serial entrepreneur who built Ultimate Digital Solutions (UDS) into a ₹10 crore-plus, multi-domain IT services and field-operations company spanning system integration, data-centre O&amp;M, POS deployment, e-governance and digital transformation. Two decades across IT, telecom and operations — from enterprise sales at Aircel, Reliance and HCL to running pan-India delivery with a ~150-strong field workforce. Today focused on applying AI to modernise field-heavy service businesses, while backing ventures in mobility, creative production and social impact.</div>
+
+    <div class="metrics" style="--mcols:4">
+      <div class="metric"><div class="n">₹10 Cr+</div><div class="l">Turnover built at UDS</div></div><div class="metric"><div class="n">15+ yrs</div><div class="l">Founding &amp; operating</div></div><div class="metric"><div class="n">Pan-India</div><div class="l">Multi-state delivery</div></div><div class="metric"><div class="n">~150</div><div class="l">Field &amp; tech workforce</div></div>
+    </div>
+
+    <section class="block">
+      <h2 class="sec-title"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12h18" fill="none" stroke="currentColor" stroke-width="1.6"/></svg> Ventures <span class="tick">//</span> Leadership</h2>
+      <div class="ventures">
+  <article class="venture lead">
+    <div class="v-head">
+      <h3>Ultimate Digital Solutions Pvt. Ltd. (UDS)</h3>
+      <span class="r">Founder &amp; CEO / Managing Director</span>
+      <span class="d">2009 – Present</span>
+    </div>
+    <div class="v-meta">Kolkata, India  ·  IT services · system integration · field operations · POS · data-centre O&amp;M · e-governance</div>
+    <ul><li>Founded and scaled UDS into a ₹10 crore-plus, multi-service IT and operations company spanning system integration, data-centre O&amp;M, POS deployment, field manpower, e-governance and digital transformation.</li><li>Grew a ~150-strong field and technical delivery workforce and built pan-India operations across multiple Indian states.</li><li>Won and served 20+ enterprise and government clients, owning proposals, sales, pricing and strategic partnerships end to end.</li><li>Directed large-scale government-linked digitisation deployments mobilising 1,000+ field resources with SLA-bound execution.</li></ul>
+  </article>
+  <article class="venture">
+    <div class="v-head">
+      <h3>Golden Frame Talkies</h3>
+      <span class="r">Founder &amp; Director</span>
+      <span class="d">Present</span>
+    </div>
+    <div class="v-meta">Kolkata, India  ·  Theatre · storytelling · creative production</div>
+    <ul><li>Founded a theatre and storytelling venture, directing and writing stage productions that blend classical theatre with contemporary narratives.</li></ul>
+  </article>
+  <article class="venture">
+    <div class="v-head">
+      <h3>Project Paco Foundation</h3>
+      <span class="r">Founder &amp; Chairman</span>
+      <span class="d">2021 – Present</span>
+    </div>
+    <div class="v-meta">Kolkata, India  ·  Social impact · youth education · community</div>
+    <ul><li>Founded a registered Section-8 non-profit (est. 2021) supporting youth education and development programmes.</li></ul>
+  </article>
+  <article class="venture">
+    <div class="v-head">
+      <h3>AAOcab</h3>
+      <span class="r">Founder &amp; Director</span>
+      <span class="d">Present</span>
+    </div>
+    <div class="v-meta">Kolkata, India  ·  Mobility · outstation travel services</div>
+    <ul><li>Launched a human-assisted outstation cab service with phone/WhatsApp booking for families, patients and non-app users, emphasising driver welfare and passenger safety.</li></ul>
+  </article></div>
+    </section>
+
+    <section class="block">
+      <h2 class="sec-title"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg> Products <span class="tick">//</span> Concepts</h2>
+      <div class="products"><article class="product"><h4>FieldConnect</h4><div class="t">Field operations management</div><p>Field engineer tracking · Call assignment · Stock movement · Attendance &amp; reporting</p></article><article class="product"><h4>PosBuddy</h4><div class="t">POS service management</div><p>POS device stock tracking · Install &amp; service calls · Engineer allocation · Merchant support flow</p></article></div>
+    </section>
+
+    <section class="block">
+      <h2 class="sec-title"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z" fill="currentColor"/></svg> Notable Achievements</h2>
+      <ul class="ach"><li>Founded and scaled Ultimate Digital Solutions to a ₹10 crore-plus turnover business within its early growth phase.</li><li>Built pan-India service capability across multiple Indian states with a ~150-person field and technical workforce.</li><li>Delivered government-linked digitisation programmes mobilising thousands of field resources under strict SLAs.</li><li>Won 20+ enterprise and government accounts across POS, data-centre O&amp;M and e-governance.</li><li>Conceptualised FieldConnect and PosBuddy — SaaS products for field-operations and POS service management.</li><li>Launched three ventures and one registered non-profit across IT, mobility, creative production and social impact.</li><li>Scored 84% in the SAP ABAP certification (2008) — cited as one of the highest in India at the time.</li><li>Summited Annapurna Base Camp (4,130 m) in October 2023.</li></ul>
+    </section>
+
+    <section class="block">
+      <h2 class="sec-title"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12h18" fill="none" stroke="currentColor" stroke-width="1.6"/></svg> Earlier Career</h2>
+      <div class="earlier"><div class="early"><span class="ec">Aircel</span><span class="et">Executive — Enterprise / WiMAX Solutions</span><span class="ed">Earlier career</span></div><div class="early"><span class="ec">Reliance Communications</span><span class="et">Corporate Sales Executive</span><span class="ed">Earlier career</span></div><div class="early"><span class="ec">HCL Infosystems</span><span class="et">Executive</span><span class="ed">Earlier career</span></div></div>
+    </section>
+
+    <div class="brow">
+      <section class="block"><h2 class="sec-title"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><circle cx="12" cy="9" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 13l-1.5 7L12 18l4.5 2L15 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> Awards</h2>
+        <div class="item">Top 50 Emerging Startup in India</div><div class="item">MSME Business Award — Bengal Chamber of Commerce &amp; Industry</div><div class="item">Leading SME of India — Dun &amp; Bradstreet (self-reported, 2014)</div><div class="item">SAP ABAP certification — 84% (2008)</div></section>
+      <section class="block"><h2 class="sec-title"><svg class="ic" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M12 20s-7-4.6-7-9.6A3.9 3.9 0 0 1 12 7a3.9 3.9 0 0 1 7 3.4c0 5-7 9.6-7 9.6z" fill="currentColor"/></svg> Beyond Work</h2>
+        <div class="item">Theatre &amp; acting · Photography · Travel storytelling · Film &amp; media · Endurance trekking · Community engagement</div></section>
+    </div>
+  </main>
+</div></body>
+</html>

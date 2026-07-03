@@ -1,0 +1,53 @@
+{
+  "version": "2.0",
+  "identity": {
+    "name": "Ananya Sharma",
+    "headline": "Computer Science Graduate | Aspiring Software Engineer",
+    "location": "Pune, Maharashtra, India",
+    "email": "ananya.sharma@example.com",
+    "phone": "+91 90000 12345",
+    "linkedin": "linkedin.com/in/ananya-sharma",
+    "github": "github.com/ananya-dev",
+    "portfolio": "ananya.dev"
+  },
+  "career_objective": "Recent CS graduate seeking a software engineering role where I can apply full-stack and ML project experience to ship reliable, user-loved products from day one.",
+  "summary": {
+    "short": "Final-year Computer Science graduate with hands-on full-stack and machine-learning projects, two internships, and hackathon wins."
+  },
+  "education": [
+    { "degree": "B.Tech", "field": "Computer Science & Engineering", "institution": "COEP Technological University, Pune", "year": 2026, "score": "CGPA 9.1 / 10" }
+  ],
+  "skills": [
+    { "name": "Python", "level": 90 },
+    { "name": "JavaScript / TypeScript", "level": 85 },
+    { "name": "React & Node.js", "level": 82 },
+    { "name": "SQL & PostgreSQL", "level": 78 },
+    { "name": "Machine Learning (PyTorch)", "level": 74 },
+    { "name": "Git & CI/CD", "level": 80 }
+  ],
+  "projects": [
+    { "name": "MediTrack", "description": "Full-stack medicine-reminder app with 500+ beta users on the college campus.", "tech": ["React", "Node.js", "PostgreSQL"] },
+    { "name": "LeafSense", "description": "CNN plant-disease classifier hitting 94% accuracy across 12 crop classes.", "tech": ["Python", "PyTorch", "Flask"] },
+    { "name": "DevBoard", "description": "Real-time Kanban board with websockets, open-sourced with 120+ GitHub stars.", "tech": ["TypeScript", "Socket.io"] },
+    { "name": "CampusEats", "description": "Food-ordering PWA that cut canteen queue time by 40% in a pilot.", "tech": ["Next.js", "Firebase"] }
+  ],
+  "internships": [
+    { "title": "Software Engineering Intern", "company": "Zynap Labs", "dates": "Summer 2025", "highlights": ["Built 3 REST APIs serving 10k+ daily requests.", "Cut page-load time 35% via lazy-loading and caching."] },
+    { "title": "Data Science Intern", "company": "InsightIQ", "dates": "Winter 2024", "highlights": ["Automated an ETL pipeline saving the team 8 hours weekly."] }
+  ],
+  "certifications": [
+    { "name": "AWS Certified Cloud Practitioner", "year": 2025 },
+    { "name": "Meta Front-End Developer", "year": 2024 }
+  ],
+  "awards": [
+    "Winner — Smart India Hackathon 2025",
+    "2nd place — COEP Ideathon 2024",
+    "Dean's List (all semesters)"
+  ],
+  "achievements": [
+    "Led a 4-person team to win Smart India Hackathon among 200+ teams.",
+    "Maintained a 9.1 CGPA while shipping 4 production-grade side projects."
+  ],
+  "languages": ["English", "Hindi", "Marathi"],
+  "interests": ["Open source", "Competitive programming", "UI design", "Chess"]
+}

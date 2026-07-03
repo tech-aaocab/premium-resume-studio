@@ -1,0 +1,45 @@
+{
+  "version": "2.0",
+  "identity": {
+    "name": "Dr. Rohan Mukherjee",
+    "headline": "Assistant Professor of Computational Neuroscience",
+    "location": "Bengaluru, India",
+    "email": "r.mukherjee@example.edu",
+    "linkedin": "linkedin.com/in/rohan-mukherjee",
+    "website": "rohanmukherjee.science"
+  },
+  "research_statement": "My research develops biologically plausible models of learning in spiking neural networks, bridging theoretical neuroscience and machine learning to understand how the brain achieves sample-efficient generalisation.",
+  "research_interests": ["Spiking neural networks", "Synaptic plasticity", "Reinforcement learning", "Neuromorphic computing"],
+  "education": [
+    { "degree": "Ph.D.", "field": "Computational Neuroscience", "institution": "Indian Institute of Science (IISc)", "year": 2019 },
+    { "degree": "M.Sc.", "field": "Physics", "institution": "IIT Bombay", "year": 2013 }
+  ],
+  "appointments": [
+    { "title": "Assistant Professor", "institution": "IIT Delhi — Dept. of Computer Science", "dates": "2021 – Present" },
+    { "title": "Postdoctoral Fellow", "institution": "University College London — Gatsby Unit", "dates": "2019 – 2021" }
+  ],
+  "publications": [
+    { "authors": "Mukherjee R., Chen L., Rao S.", "title": "Sample-efficient credit assignment in spiking networks", "venue": "Nature Machine Intelligence", "year": 2024 },
+    { "authors": "Mukherjee R., Patel A.", "title": "Local plasticity rules approximate backpropagation", "venue": "NeurIPS", "year": 2023 },
+    { "authors": "Mukherjee R., et al.", "title": "A dynamical systems view of working memory", "venue": "eLife", "year": 2022 }
+  ],
+  "grants": [
+    "SERB Core Research Grant (₹1.2 Cr, 2022–2025)",
+    "Wellcome Trust Early-Career Fellowship (2019)"
+  ],
+  "teaching": [
+    { "title": "CS6480: Neural Computation (graduate)", "institution": "IIT Delhi", "dates": "2021–present" },
+    { "title": "CS2100: Machine Learning Foundations", "institution": "IIT Delhi", "dates": "2022–present" }
+  ],
+  "conferences": [
+    { "title": "Invited talk: Plausible deep learning", "venue": "Cosyne", "year": 2024 },
+    { "title": "Symposium: Neuromorphic RL", "venue": "NeurIPS Workshop", "year": 2023 }
+  ],
+  "core_competencies": {
+    "methods": ["Computational modelling", "Bayesian inference", "Dynamical systems", "Large-scale simulation"],
+    "tools": ["Python", "JAX", "PyTorch", "Julia", "HPC / SLURM"]
+  },
+  "affiliations": ["Society for Neuroscience", "Bernstein Network"],
+  "languages": ["English", "Bengali", "Hindi"],
+  "memberships": ["ACM", "Cosyne"]
+}

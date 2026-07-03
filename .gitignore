@@ -1,6 +1,5 @@
 node_modules/
-output.pdf
-output.html
+output.*
 *.log
 .DS_Store
 examples/_preview.html

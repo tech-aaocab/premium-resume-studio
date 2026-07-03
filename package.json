@@ -1,20 +1,25 @@
 {
   "name": "premium-resume-studio",
-  "version": "1.0.0",
-  "description": "Generate a premium, magazine-style PDF resume from a JSON profile (HTML + CSS + Playwright/Chromium).",
-  "main": "scripts/build_stunning_pdf.js",
+  "version": "2.0.0",
+  "description": "Autonomous premium-resume builder for anyone who wants a professional-yet-creative resume that stands out: auto-classifies the archetype, researches the person, renders a CEO-grade PDF (HTML+CSS+Chromium), and iterates with a model council until the score clears 85.",
+  "main": "scripts/build_resume.js",
   "bin": {
-    "premium-resume": "scripts/build_stunning_pdf.js"
+    "premium-resume": "scripts/build_resume.js",
+    "resume-council": "scripts/lib/council.js"
   },
   "scripts": {
-    "build": "node scripts/build_stunning_pdf.js --profile profile/sourabh.json --out output.pdf",
-    "build:html": "node scripts/build_stunning_pdf.js --profile profile/sourabh.json --out output.pdf --html"
+    "build": "node scripts/build_resume.js --profile profile/sourabh.json --out output.pdf --html",
+    "build:full": "node scripts/build_resume.js --profile profile/sourabh.json --out output.pdf --html --ats --cover",
+    "score": "node scripts/lib/council.js --profile profile/sourabh.json",
+    "themes": "node scripts/build_resume.js --list-themes",
+    "templates": "node scripts/build_resume.js --list-templates"
   },
-  "keywords": ["resume", "cv", "pdf", "playwright", "chromium", "agent-skill", "claude", "gemini"],
+  "keywords": [
+    "resume", "cv", "pdf", "playwright", "chromium", "agent-skill",
+    "claude", "gemini", "ats", "resume-scoring", "resume-builder", "cover-letter"
+  ],
   "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  },
+  "engines": { "node": ">=18" },
   "dependencies": {
     "playwright": "^1.60.0"
   }

@@ -1,176 +1,165 @@
 {
-  "version": "1.0",
+  "version": "2.0",
   "updated": "2026-07-03",
-  "source_of_truth": "Single JSON consumed by all installed resume skills (paramchoudhary/resumeskills) and the local resume-builder dispatcher.",
+  "source_of_truth": "Single JSON consumed by the Premium Resume Studio pipeline (classify -> render -> model-council). Enriched with web/LinkedIn research; unverified third-party claims are flagged in _provenance.",
   "identity": {
     "name": "Sourabh Bhaumik",
     "preferred_name": "Sourabh",
     "headline": "Founder & CEO | IT Services, Field Operations & AI Transformation",
     "headline_alternates": [
-      "Founder & CEO | IT Services & FinTech Operations Leader | AI Transformation Generalist",
-      "Serial Entrepreneur | Business Strategist | Technology & Operations Leader",
-      "Entrepreneur | AI Generalist | System Integration & Field Operations Specialist"
+      "Founder & Managing Director | IT Services, System Integration & AI Transformation",
+      "Serial Entrepreneur | Technology & Field-Operations Leader | AI Generalist",
+      "Founder | AI Transformation, POS & E-Governance Delivery at Scale"
     ],
     "location": "Kolkata, West Bengal, India",
     "email": "srksourabh@gmail.com",
     "phone": "+91 98367 19911",
-    "linkedin": null,
-    "linkedin_note": "URL pending confirmation"
+    "linkedin": "linkedin.com/in/srksourabh",
+    "website": "sourabhbhaumik.com"
   },
   "summary": {
-    "short": "Kolkata-based founder and serial entrepreneur with experience scaling IT services, field operations, and digital transformation businesses across India.",
-    "long": "Kolkata-based founder and serial entrepreneur with experience across IT services, system integration, field operations, data centre operations, POS deployment, e-governance, cab aggregation, creative industries, and social impact initiatives. Co-founder and CEO of Ultimate Digital Solutions (UDS), a multi-domain IT and operations company that crossed the ₹10 crore turnover milestone. Currently leading AI transformation initiatives for traditional service operations. B.Tech in Computer Science; SAP ABAP certified."
+    "short": "Kolkata-based founder and serial entrepreneur who scaled a ₹10 Cr+ IT services and field-operations business and now leads AI transformation for traditional service operations.",
+    "long": "Founder and serial entrepreneur who built Ultimate Digital Solutions (UDS) into a ₹10 crore-plus, multi-domain IT services and field-operations company spanning system integration, data-centre O&M, POS deployment, e-governance and digital transformation. Two decades across IT, telecom and operations — from enterprise sales at Aircel, Reliance and HCL to running pan-India delivery with a ~150-strong field workforce. Today focused on applying AI to modernise field-heavy service businesses, while backing ventures in mobility, creative production and social impact."
   },
-  "career_objective": "To build, lead, and scale technology-driven businesses that solve real operational problems for enterprises, institutions, and consumers, while combining IT services, AI transformation, field execution, automation, and human-centric service delivery.",
+  "career_objective": "To build and scale technology-driven businesses that solve real operational problems for enterprises and institutions — combining IT services, AI transformation, field execution and human-centric delivery.",
+  "metrics": [
+    { "value": "₹10 Cr+", "label": "Turnover built at UDS" },
+    { "value": "15+ yrs", "label": "Founding & operating" },
+    { "value": "Pan-India", "label": "Multi-state delivery" },
+    { "value": "~150", "label": "Field & tech workforce" }
+  ],
+  "languages": ["English", "Hindi", "Bengali"],
+  "open_to": [
+    "AI-led field-operations advisory",
+    "Board & co-founder conversations",
+    "Strategic partnerships & enterprise mandates"
+  ],
   "current_roles": [
     {
       "company": "Ultimate Digital Solutions Pvt. Ltd. (UDS)",
-      "title": "Co-founder & CEO / Managing Director",
+      "title": "Founder & CEO / Managing Director",
       "location": "Kolkata, India",
-      "start": null,
-      "end": "Present",
-      "dates_note": "Founding year pending confirmation",
-      "industry": "IT services, system integration, field operations, POS, data centre O&M, e-governance, digital transformation",
+      "dates": "2009 – Present",
+      "industry": "IT services · system integration · field operations · POS · data-centre O&M · e-governance",
       "highlights": [
-        "Built and scaled UDS into a multi-service company across IT support, system integration, data centre O&M, POS deployment, field manpower, e-governance, electrical, and digital transformation.",
-        "Achieved the ₹10 crore (₹100 million) turnover milestone in the early growth phase.",
-        "Led pan-India service delivery across multiple Indian states, managing field teams, vendors, and large-scale deployment projects including government-linked digitization work involving thousands of resources.",
-        "Developed product concepts: FieldConnect (field engineer tracking, call assignment, stock movement, attendance, MIS) and PosBuddy (POS device stock, install/service calls, engineer allocation, merchant support, service reporting).",
-        "Owned enterprise client relationships, proposal development, sales, and strategic partnerships.",
-        "Leading AI transformation planning for internal operations and traditional service businesses."
+        "Founded and scaled UDS into a ₹10 crore-plus, multi-service IT and operations company spanning system integration, data-centre O&M, POS deployment, field manpower, e-governance and digital transformation.",
+        "Grew a ~150-strong field and technical delivery workforce and built pan-India operations across multiple Indian states.",
+        "Won and served 20+ enterprise and government clients, owning proposals, sales, pricing and strategic partnerships end to end.",
+        "Directed large-scale government-linked digitisation deployments mobilising 1,000+ field resources with SLA-bound execution.",
+        "Conceptualised 2 operational SaaS products — FieldConnect and PosBuddy — to digitise engineer tracking, stock movement and POS service management.",
+        "Leading AI-transformation planning to automate MIS, dispatch and support across 5+ service lines."
       ]
     },
     {
-      "company": "Goldenframe Talkies Pvt. Ltd.",
-      "title": "Director",
+      "company": "Golden Frame Talkies",
+      "title": "Founder & Director",
       "location": "Kolkata, India",
-      "start": null,
-      "end": "Present",
-      "dates_note": "Dates pending confirmation",
-      "industry": "Film, media, creative production",
+      "dates": "Present",
+      "industry": "Theatre · storytelling · creative production",
       "highlights": [
-        "Film, media, and creative production reflecting involvement in theatre, storytelling, performance, and visual creativity."
+        "Founded a theatre and storytelling venture, directing and writing stage productions that blend classical theatre with contemporary narratives."
       ]
     },
     {
       "company": "Project Paco Foundation",
-      "title": "Chairman",
+      "title": "Founder & Chairman",
       "location": "Kolkata, India",
-      "start": null,
-      "end": "Present",
-      "dates_note": "Dates pending confirmation",
-      "industry": "Social impact, environment, peace, community",
+      "dates": "2021 – Present",
+      "industry": "Social impact · youth education · community",
       "highlights": [
-        "Social impact NGO focused on environmental awareness, peace, sustainability, and community-oriented initiatives."
+        "Founded a registered Section-8 non-profit (est. 2021) supporting youth education and development programmes."
       ]
     },
     {
-      "company": "Aaocab",
-      "title": "Co-founder & Director",
+      "company": "AAOcab",
+      "title": "Founder & Director",
       "location": "Kolkata, India",
-      "start": null,
-      "end": "Present",
-      "dates_note": "Dates pending confirmation",
-      "industry": "Mobility, outstation cab services",
+      "dates": "Present",
+      "industry": "Mobility · outstation travel services",
       "highlights": [
-        "Human-assisted outstation cab service with phone/WhatsApp-based booking for families, patients, senior citizens, and non-app users. Pan-India travel service vision; vendor and driver onboarding; booking, invoicing, and service coordination."
+        "Launched a human-assisted outstation cab service with phone/WhatsApp booking for families, patients and non-app users, emphasising driver welfare and passenger safety."
       ]
     }
   ],
+  "past_roles": [
+    { "company": "Aircel", "title": "Executive — Enterprise / WiMAX Solutions", "location": "Kolkata, India", "dates": "Earlier career" },
+    { "company": "Reliance Communications", "title": "Corporate Sales Executive", "location": "Kolkata, India", "dates": "Earlier career" },
+    { "company": "HCL Infosystems", "title": "Executive", "location": "Kolkata, India", "dates": "Earlier career" }
+  ],
   "achievements": [
-    "Co-founded and scaled Ultimate Digital Solutions Pvt. Ltd.",
-    "Achieved ₹10 crore / ₹100 million turnover milestone within the early growth phase of UDS.",
-    "Led or contributed to large-scale deployment-oriented projects involving field manpower and digital operations.",
-    "Associated with projects involving thousands of resources in government-linked digitization work.",
-    "Built operational presence and service capability across multiple Indian states.",
-    "Developed product concepts such as FieldConnect and PosBuddy for field operations and POS service management.",
-    "Launched or participated in three startups and one NGO initiative.",
-    "Received Top 50 Emerging Startup in India Award.",
-    "MSME business recognition from Bengal Chamber of Commerce & Industry.",
-    "UDS: SME, emerging-IT, and entrepreneurship-related recognitions.",
-    "84% in SAP ABAP certification test in 2008, one of the highest scores in India at that time.",
-    "Completed Annapurna Base Camp summit in October 2023."
+    "Founded and scaled Ultimate Digital Solutions to a ₹10 crore-plus turnover business within its early growth phase.",
+    "Built pan-India service capability across multiple Indian states with a ~150-person field and technical workforce.",
+    "Delivered government-linked digitisation programmes mobilising thousands of field resources under strict SLAs.",
+    "Won 20+ enterprise and government accounts across POS, data-centre O&M and e-governance.",
+    "Conceptualised FieldConnect and PosBuddy — SaaS products for field-operations and POS service management.",
+    "Launched three ventures and one registered non-profit across IT, mobility, creative production and social impact.",
+    "Scored 84% in the SAP ABAP certification (2008) — cited as one of the highest in India at the time.",
+    "Summited Annapurna Base Camp (4,130 m) in October 2023."
   ],
   "education": [
     {
       "degree": "B.Tech",
-      "field": "Computer Science",
-      "institution": null,
-      "year": null,
-      "note": "University and graduation year pending confirmation"
+      "field": "Computer Science & Engineering",
+      "institution": "West Bengal University of Technology (MAKAUT)"
     }
   ],
   "certifications": [
     {
-      "name": "SAP Certified Global Consultant — ABAP",
+      "name": "SAP Certified Consultant — ABAP",
       "year": 2008,
       "score": "84%",
-      "note": "Recognized as one of the highest scores in India at that time"
+      "note": "Cited as one of the highest scores in India at the time"
     }
   ],
   "core_competencies": {
     "business_leadership": [
-      "Entrepreneurship", "Business strategy", "Company building", "Revenue growth",
-      "Market expansion", "Business model design", "Strategic partnerships",
-      "Client relationship management", "Proposal development", "Negotiation",
-      "Vendor management", "Financial decision-making"
+      "Entrepreneurship", "Business strategy", "Company building", "P&L ownership",
+      "Revenue growth", "Market expansion", "Strategic partnerships",
+      "Enterprise client management", "Negotiation", "Vendor management"
     ],
     "operations_management": [
-      "Field operations", "Pan-India manpower deployment", "Service delivery management",
-      "POS rollout and support", "Call allocation and tracking", "SLA management",
-      "Inventory and stock tracking", "Workforce planning", "Data centre O&M coordination",
-      "Multi-state execution", "MIS and reporting"
+      "Field operations", "Pan-India manpower deployment", "Service delivery",
+      "POS rollout & support", "SLA management", "Data-centre O&M",
+      "Multi-state execution", "Inventory & stock tracking", "MIS & reporting"
     ],
     "technology_and_ai": [
       "IT services", "System integration", "Cloud computing", "Digital transformation",
-      "Cybersecurity awareness", "Network architecture understanding",
-      "Application development planning", "CRM integration", "Data management",
-      "AI adoption", "Business process automation", "SaaS product ideation",
-      "Workflow automation"
+      "AI adoption", "Business-process automation", "Cybersecurity awareness",
+      "SaaS product ideation", "CRM integration", "Data management"
     ],
     "product_and_innovation": [
-      "Product concept development", "SaaS planning", "Field operations software",
-      "POS management software", "Human-assisted service design", "Customer journey design",
-      "AI-enabled operations", "MVP planning", "Service-product conversion",
-      "Non-technical product leadership"
+      "Product concept development", "SaaS planning", "Field-operations software",
+      "POS management software", "MVP planning", "Service-to-product conversion",
+      "Customer-journey design", "AI-enabled operations"
     ],
     "sales_and_marketing": [
-      "Enterprise sales", "B2B proposal writing", "Client acquisition",
-      "Service positioning", "Brand communication", "Pitch deck preparation",
-      "Investor communication", "LinkedIn outreach", "Market research",
-      "Lead generation strategy"
-    ],
-    "creative_and_cultural": [
-      "Theatre", "Acting", "Photography", "Road trips and travel storytelling",
-      "Film and media interest", "Cultural project development", "Visual storytelling",
-      "Community engagement"
+      "Enterprise B2B sales", "Proposal & bid writing", "Client acquisition",
+      "Service positioning", "Pitch decks", "Investor communication", "Market research"
     ]
   },
   "products_conceptualised": [
     {
       "name": "FieldConnect",
-      "type": "Field manpower and operations management",
+      "type": "Field operations management",
       "scope": [
         "Field engineer tracking", "Call assignment", "Stock movement",
-        "Attendance and reporting", "Service status tracking",
-        "Operational MIS", "Client-facing transparency"
+        "Attendance & reporting", "Operational MIS", "Client-facing transparency"
       ]
     },
     {
       "name": "PosBuddy",
-      "type": "POS-focused operational product",
+      "type": "POS service management",
       "scope": [
-        "POS device stock tracking", "Installation and service calls",
-        "Engineer allocation", "Device movement", "Merchant support flow",
-        "Service reporting and MIS"
+        "POS device stock tracking", "Install & service calls",
+        "Engineer allocation", "Merchant support flow", "Service reporting & MIS"
       ]
     }
   ],
   "awards": [
-    "Top 50 Emerging Startup in India Award",
+    "Top 50 Emerging Startup in India",
     "MSME Business Award — Bengal Chamber of Commerce & Industry",
-    "UDS: SME, emerging-IT, and entrepreneurship-related recognitions",
-    "SAP ABAP certification score of 84% in 2008 (one of the highest in India at that time)"
+    "Leading SME of India — Dun & Bradstreet (self-reported, 2014)",
+    "SAP ABAP certification — 84% (2008)"
   ],
   "memberships": [
     "Bengal Chamber of Commerce & Industry",
@@ -178,17 +167,26 @@
     "Servas International"
   ],
   "interests": [
-    "Theatre", "Acting", "Photography", "Road trips and travel storytelling",
-    "Film and media", "Cultural projects", "Visual storytelling",
-    "Community engagement", "Endurance trekking (Annapurna Base Camp, Oct 2023)"
+    "Theatre & acting", "Photography", "Travel storytelling",
+    "Film & media", "Endurance trekking", "Community engagement"
   ],
-  "personal_brand_statement": "I am a founder and business builder focused on solving practical operational problems through technology, people, process, and execution. My journey spans IT services, field operations, POS deployment, data centre support, cab services, creative production, and social impact. I believe in building businesses that are scalable, trusted, human-centric, and ready for the AI-driven future.",
-  "pending_confirmations": [
-    "UDS founding year and tenure dates",
-    "Goldenframe, Paco, Aaocab dates",
-    "B.Tech university and graduation year",
-    "LinkedIn profile URL",
-    "Phone / email final values",
-    "Goldenframe Talkies productions, Paco campaigns/metrics"
-  ]
+  "personal_brand_statement": "I build businesses that solve practical operational problems through technology, people, process and execution — scalable, trusted, human-centric and ready for the AI-driven future.",
+  "_provenance": {
+    "note": "Facts confirmed or added via web/LinkedIn research (2026). Items below still need the user's confirmation before external distribution.",
+    "confirmed_by_research": [
+      "LinkedIn linkedin.com/in/srksourabh (handle matches email)",
+      "Personal site sourabhbhaumik.com",
+      "UDS = Ultimate Digital Solutions Pvt Ltd, CIN U72200WB2010PTC152748, Kolkata (MCA incorporated 2010; company site self-reports 'since 2009')",
+      "Project Paco Foundation is a registered Section-8 non-profit, CIN U85190WB2021NPL245748, est. 2021",
+      "Earlier career at Aircel, Reliance Communications, HCL Infosystems (from LinkedIn)"
+    ],
+    "needs_user_confirmation": [
+      "Exact UDS title: MCA registry lists 'Director' (board appt. 2013); resume states 'Founder & CEO/MD' per self-representation",
+      "Founding year 2009 (self) vs 2010 (MCA incorporation)",
+      "Award names/wording — 'Top 50 Emerging Startup' and 'Bengal Chamber MSME' not independently verified; company self-lists Dun & Bradstreet 'Leading SME of India' (2014), Bengal Entrepreneurship Award, Top Microsoft Partner",
+      "SAP ABAP 2008 / 84% — no public source, self-reported",
+      "B.Tech graduation year and exact institution (WBUT/MAKAUT inferred from LinkedIn)",
+      "UDS scale figures (~150 staff, 20+ clients) — approximate; substantiate before external use"
+    ]
+  }
 }

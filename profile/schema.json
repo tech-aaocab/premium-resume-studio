@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/srksourabh/premium-resume-studio/profile/schema.json",
+  "title": "Premium Resume Studio profile",
+  "type": "object",
+  "required": ["identity"],
+  "additionalProperties": true,
+  "properties": {
+    "identity": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": true,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "preferred_name": { "type": "string" },
+        "headline": { "type": "string" },
+        "headline_alternates": { "type": "array", "items": { "type": "string" } },
+        "location": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "linkedin": { "type": "string" },
+        "website": { "type": "string" },
+        "github": { "type": "string" },
+        "portfolio": { "type": "string" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": { "short": { "type": "string" }, "long": { "type": "string" } }
+    },
+    "career_objective": { "type": "string" },
+    "personal_brand_statement": { "type": "string" },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": { "value": { "type": "string" }, "label": { "type": "string" } },
+        "required": ["value"]
+      }
+    },
+    "current_roles": { "type": "array", "items": { "$ref": "#/definitions/role" } },
+    "past_roles": { "type": "array", "items": { "$ref": "#/definitions/role" } },
+    "appointments": { "type": "array", "items": { "$ref": "#/definitions/role" } },
+    "internships": { "type": "array", "items": { "$ref": "#/definitions/role" } },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "highlights": { "type": "array", "items": { "type": "string" } },
+          "tech": { "type": "array", "items": { "type": "string" } },
+          "stack": { "type": "array", "items": { "type": "string" } },
+          "link": { "type": "string" }
+        }
+      }
+    },
+    "core_competencies": {
+      "type": "object",
+      "additionalProperties": { "type": "array", "items": { "type": "string" } }
+    },
+    "skills": {
+      "oneOf": [
+        { "type": "array", "items": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" }, "level": { "type": "number", "minimum": 0, "maximum": 100 } } }
+            ] } },
+        { "type": "object", "additionalProperties": { "type": "array" } }
+      ]
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "degree": { "type": "string" },
+          "field": { "type": "string" },
+          "institution": { "type": "string" },
+          "year": { "type": ["number", "string"] },
+          "score": { "type": "string" },
+          "gpa": { "type": "string" }
+        }
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "year": { "type": ["number", "string"] },
+          "score": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "publications": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string" },
+          { "type": "object", "properties": { "authors": { "type": "string" }, "title": { "type": "string" }, "venue": { "type": "string" }, "year": { "type": ["number", "string"] } } }
+        ]
+      }
+    },
+    "grants": { "type": "array" },
+    "teaching": { "type": "array" },
+    "conferences": { "type": "array" },
+    "presentations": { "type": "array" },
+    "affiliations": { "type": "array", "items": { "type": "string" } },
+    "products_conceptualised": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": { "name": { "type": "string" }, "type": { "type": "string" }, "scope": { "type": "array", "items": { "type": "string" } } }
+      }
+    },
+    "achievements": { "type": "array", "items": { "type": "string" } },
+    "awards": { "type": "array" },
+    "memberships": { "type": "array", "items": { "type": "string" } },
+    "languages": { "type": "array", "items": { "type": "string" } },
+    "open_to": { "type": "array", "items": { "type": "string" } },
+    "interests": { "type": "array", "items": { "type": "string" } },
+    "_provenance": { "type": "object" }
+  },
+  "definitions": {
+    "role": {
+      "type": "object",
+      "properties": {
+        "company": { "type": "string" },
+        "title": { "type": "string" },
+        "role": { "type": "string" },
+        "location": { "type": "string" },
+        "dates": { "type": "string" },
+        "start": { "type": ["string", "number", "null"] },
+        "end": { "type": ["string", "number", "null"] },
+        "industry": { "type": "string" },
+        "highlights": { "type": "array", "items": { "type": "string" } },
+        "bullets": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

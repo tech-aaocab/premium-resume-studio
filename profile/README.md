@@ -1,23 +1,34 @@
 # Profile JSON schema
 
-The `build_stunning_pdf.js` script reads a JSON file with the structure below.
-All fields are optional except `identity.name` and `identity.headline`.
+The Studio reads one JSON file and drives everything from it — classification, rendering, and
+scoring. Only `identity.name` is required; every other field is optional and lights up a
+section when present. Validate against `schema.json`.
 
-## Top-level
+## Top-level fields
 
-| Field | Type | Notes |
-|-------|------|-------|
-| `identity` | object | Required. Name, contact, headline. |
-| `summary` | object | `{ short, long }`. Used for the lede callout. |
-| `current_roles` | array | Ventures/jobs to render in the timeline. |
-| `products_conceptualised` | array | Optional. Product cards section. |
-| `achievements` | array of strings | Bulleted in the achievements section. |
-| `core_competencies` | object | Maps to skill pills in the sidebar. |
-| `education` | array | Rendered in the sidebar. |
-| `certifications` | array | Rendered in the sidebar. |
-| `awards` | array of strings | Bulleted at the bottom. |
-| `memberships` | array of strings | Bulleted in the sidebar. |
-| `interests` | array of strings | Bulleted under "Personal". |
+| Field | Type | Used by |
+|-------|------|---------|
+| `identity` | object | **required** — name, contact, headline, links |
+| `summary` | `{ short, long }` | lede / summary callout |
+| `career_objective` | string | header tag (exec) · objective (fresher) |
+| `personal_brand_statement` | string | fallback summary |
+| `metrics` | `[{ value, label }]` | hero metric strip (else auto-derived) |
+| `current_roles` | array of roles | experience / venture timeline |
+| `past_roles` | array of roles | "Earlier Career" strip (exec) |
+| `appointments` | array of roles | academic appointments |
+| `internships` | array of roles | fresher experience |
+| `projects` | `[{ name, description, tech[] }]` | fresher / technical project grid |
+| `core_competencies` | `{ group: [skill…] }` | sidebar pill groups |
+| `skills` | `[{ name, level }]` or `{ group:[…] }` | fresher skill bars / tech matrix |
+| `education` | `[{ degree, field, institution, year, score }]` | education section |
+| `certifications` | `[{ name, year, score }]` | certifications |
+| `publications` | `[{ authors, title, venue, year }]` | academic (numbered) |
+| `grants` `teaching` `conferences` `affiliations` | arrays | academic sections |
+| `products_conceptualised` | `[{ name, type, scope[] }]` | product cards (exec) |
+| `achievements` | `[string]` | achievements grid |
+| `awards` | array | awards |
+| `memberships` `languages` `open_to` `interests` | arrays | sidebar / footer |
+| `_provenance` | object | research audit trail (not rendered, not scored) |
 
 ## identity
 
@@ -28,45 +39,54 @@ All fields are optional except `identity.name` and `identity.headline`.
   "location": "Kolkata, West Bengal, India",
   "email": "you@example.com",
   "phone": "+91 98xxx xxxxx",
-  "linkedin": "linkedin.com/in/yourhandle"  // optional
+  "linkedin": "linkedin.com/in/yourhandle",
+  "website": "yoursite.com",
+  "github": "github.com/you",
+  "portfolio": "you.dev"
 }
 ```
 
-## current_roles (one per venture)
+## roles (current_roles / past_roles / internships / appointments)
 
 ```json
 {
   "company": "Company Name",
-  "title": "Co-founder & CEO",
+  "title": "Founder & CEO",
+  "dates": "2009 – Present",
+  "location": "City, Country",
+  "industry": "IT services · field operations",
   "highlights": [
-    "Achievement 1",
-    "Achievement 2"
+    "Founded and scaled … to ₹10 Cr+ …",   // quantify + start with a strong verb
+    "Grew a ~150-strong team across …"
   ]
 }
 ```
 
-## core_competencies
+## metrics (hero strip)
 
-Keys are sidebar pill groups. The first 5-6 items in each group are rendered.
+Give the strip explicitly, or omit it and the Studio mines standout numbers from your
+achievements, roles, and certifications:
 
 ```json
-{
-  "business_leadership": ["Entrepreneurship", "Strategy", "..."],
-  "operations_management": ["Field ops", "..."],
-  "technology_and_ai": ["AI adoption", "Cloud", "..."]
-}
+"metrics": [
+  { "value": "₹10 Cr+", "label": "Turnover built" },
+  { "value": "15+ yrs", "label": "Founding & operating" }
+]
 ```
 
-## products_conceptualised
+## _provenance (research audit trail)
+
+Keeps the profile honest without polluting the rendered resume. Not shown on the PDF and not
+counted by the credibility score:
 
 ```json
-{
-  "name": "FieldConnect",
-  "type": "Field operations management",
-  "scope": ["Engineer tracking", "Call assignment", "..."]
+"_provenance": {
+  "confirmed_by_research": ["LinkedIn linkedin.com/in/… (handle matches email)"],
+  "needs_user_confirmation": ["Exact job title", "Founding year", "Award wording"]
 }
 ```
 
 ## Example
 
-See `sourabh.json` for a complete, filled-out example.
+See `sourabh.json` (executive), `../examples/fresher-sample.json`, and
+`../examples/academic-sample.json` for complete, filled-out profiles.
