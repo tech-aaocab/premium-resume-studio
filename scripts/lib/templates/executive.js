@@ -8,18 +8,18 @@ const { icon, pills, docShell, contactBlock } = require('./_components');
 
 const css = `
   .sheet{ display:grid; grid-template-columns:68mm 1fr; }
-  .aside{ padding:13mm 9mm 12mm 11mm; }
-  .name{ font-size:17.5pt; font-weight:800; line-height:1.12; margin:6mm 0 1mm; letter-spacing:-.3px; }
-  .head{ font-size:8.8pt; font-weight:500; color:var(--side-muted); line-height:1.4; margin-bottom:6mm; }
-  main{ padding:13mm 12mm 12mm 10mm; }
-  .banner{ border-bottom:2.5px solid var(--side-from); padding-bottom:3.5mm; margin-bottom:4.5mm; display:flex; align-items:flex-end; justify-content:space-between; gap:6mm; }
-  .banner h1{ font-size:29pt; line-height:1; color:var(--ink); font-weight:800; letter-spacing:-.9px; }
-  .banner .role{ font-size:9pt; color:var(--accent-deep); font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-top:2mm; }
-  .banner .tag{ text-align:right; font-size:8pt; color:var(--ink-soft); line-height:1.4; max-width:46mm; }
-  .lede{ margin-bottom:5mm; }
-  .metrics{ margin-bottom:6mm; }
-  .block{ margin-bottom:5.5mm; }
-  .ventures{ display:flex; flex-direction:column; gap:3.5mm; }
+  .aside{ padding:11mm 8mm 11mm 10mm; }
+  .name{ font-size:17pt; font-weight:800; line-height:1.12; margin:5mm 0 1mm; letter-spacing:-.3px; }
+  .head{ font-size:8.6pt; font-weight:500; color:var(--side-muted); line-height:1.38; margin-bottom:5mm; }
+  main{ padding:11mm 12mm 11mm 10mm; }
+  .banner{ border-bottom:2.5px solid var(--side-from); padding-bottom:3mm; margin-bottom:3.6mm; display:flex; align-items:flex-end; justify-content:space-between; gap:6mm; }
+  .banner h1{ font-size:27pt; line-height:1; color:var(--ink); font-weight:800; letter-spacing:-.8px; }
+  .banner .role{ font-size:8.8pt; color:var(--accent-deep); font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-top:1.8mm; }
+  .banner .tag{ text-align:right; font-size:7.8pt; color:var(--ink-soft); line-height:1.38; max-width:46mm; }
+  .lede{ margin-bottom:4mm; }
+  .metrics{ margin-bottom:4.5mm; }
+  .block{ margin-bottom:4.2mm; }
+  .ventures{ display:flex; flex-direction:column; gap:2.8mm; }
   .venture{ position:relative; padding-left:6mm; border-left:2px solid var(--hairline); }
   .venture::before{ content:''; position:absolute; left:-3.4mm; top:1mm; width:4.6mm; height:4.6mm; border-radius:50%; background:var(--bg); border:2.4px solid var(--side-from); }
   .venture.lead::before{ background:var(--accent); border-color:var(--accent-deep); }

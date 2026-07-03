@@ -48,10 +48,16 @@ const PROFILE = arg('--profile', path.join(__dirname, '..', 'profile', 'sourabh.
 const OUT_PDF = arg('--out', 'output.pdf');
 const THRESHOLD = Number(arg('--threshold', '85'));
 const ALSO_HTML = flag('--html');
-const ALSO_ATS = flag('--ats');
-const COVER = flag('--cover');
+const ALL = flag('--all');
+const FORMATS = (arg('--format', '') || '').toLowerCase();
+const ALSO_ATS = flag('--ats') || ALL || FORMATS.includes('ats') || FORMATS.includes('txt');
+const ALSO_DOCX = flag('--docx') || ALL || FORMATS.includes('docx');
+const ALSO_ODT = flag('--odt') || ALL || FORMATS.includes('odt');
+const COVER = flag('--cover') || ALL;
 const SCORE_ONLY = flag('--score-only');
 const AS_JSON = flag('--json');
+const NO_FIT = flag('--no-fit');
+const MAX_PAGES = arg('--max-pages', null) ? parseInt(arg('--max-pages', null), 10) : null;
 
 if (!fs.existsSync(PROFILE)) die(`Profile not found: ${PROFILE}`);
 const p = JSON.parse(fs.readFileSync(PROFILE, 'utf8'));
@@ -101,26 +107,31 @@ ${id.name}
 `;
 }
 
-async function renderPdf(html, outAbs) {
+async function renderPdf(html, outAbs, { fit = true, maxPages = null } = {}) {
   const { launchChromium } = require('./lib/browser');
+  const { fitPage, PAGE_PX } = require('./lib/fit');
   let browser;
   try { browser = await launchChromium(); }
   catch (e) { die('\n' + e.message + '\n', 2); }
   try {
     const ctx = await browser.newContext();
     const page = await ctx.newPage();
+    await page.emulateMedia({ media: 'print' });
     await page.setContent(html, { waitUntil: 'networkidle' });
-    // Estimate page count from rendered height (96dpi: A4 = 1122.5px tall).
-    const heightPx = await page.evaluate(() => {
-      const el = document.querySelector('.sheet') || document.body;
-      return el.getBoundingClientRect().height;
-    });
-    const pages = Math.max(1, Math.round(heightPx / 1122.5));
+
+    let pages, scale = '1';
+    if (fit) {
+      const r = await fitPage(page, { maxPages });
+      pages = r.pages; scale = r.font !== 1 ? `densify ${r.font}` : `fill ${r.space}`;
+    } else {
+      const h = await page.evaluate(() => (document.querySelector('.sheet') || document.body).getBoundingClientRect().height);
+      pages = Math.max(1, Math.round(h / PAGE_PX));
+    }
     await page.pdf({
       path: outAbs, format: 'A4', printBackground: true,
       margin: { top: '0', right: '0', bottom: '0', left: '0' }, preferCSSPageSize: true,
     });
-    return { pages };
+    return { pages, scale };
   } finally {
     await browser.close();
   }
@@ -136,10 +147,10 @@ async function renderPdf(html, outAbs) {
   let pages = null;
   if (!SCORE_ONLY) {
     if (ALSO_HTML) fs.writeFileSync(outAbs.replace(/\.pdf$/i, '.html'), html);
-    const res = await renderPdf(html, outAbs);
+    const res = await renderPdf(html, outAbs, { fit: !NO_FIT, maxPages: MAX_PAGES });
     pages = res.pages;
     const kb = Math.round(fs.statSync(outAbs).size / 1024);
-    console.log(`\n  ✅ PDF   : ${outAbs}  (${pages} page${pages > 1 ? 's' : ''}, ${kb} KB, template: ${tpl.id})`);
+    console.log(`\n  ✅ PDF   : ${outAbs}  (${pages} page${pages > 1 ? 's' : ''}, ${kb} KB, template: ${tpl.id}, ${res.scale})`);
     if (ALSO_HTML) console.log(`  ✅ HTML  : ${outAbs.replace(/\.pdf$/i, '.html')}`);
   }
 
@@ -149,6 +160,18 @@ async function renderPdf(html, outAbs) {
     fs.writeFileSync(txt, atsText(p));
     atsWritten = true;
     console.log(`  ✅ ATS   : ${txt}  (plain-text, parser-safe)`);
+  }
+  if (ALSO_DOCX) {
+    const { toDocxBuffer } = require('./lib/export/docx');
+    const out = outAbs.replace(/\.pdf$/i, '.docx');
+    fs.writeFileSync(out, await toDocxBuffer(p, { classification: cls, theme, themeKey }));
+    console.log(`  ✅ DOCX  : ${out}  (editable Word, single-column)`);
+  }
+  if (ALSO_ODT) {
+    const { toOdtBuffer } = require('./lib/export/odt');
+    const out = outAbs.replace(/\.pdf$/i, '.odt');
+    fs.writeFileSync(out, await toOdtBuffer(p, { classification: cls, theme, themeKey }));
+    console.log(`  ✅ ODT   : ${out}  (OpenDocument, editable)`);
   }
   if (COVER) {
     const cov = outAbs.replace(/\.pdf$/i, '.cover.txt');

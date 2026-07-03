@@ -11,7 +11,8 @@ Feed it one JSON profile. It figures out the rest:
 3. 🎨 **Renders a premium PDF** — colorful but sober, real CSS design, printed by Chromium.
 4. 🏛️ **Scores it with a Model Council** and **iterates until it clears 85 / 100.**
 
-Plus: nine curated color themes, an **ATS-safe plain-text** export, and a **cover-letter draft**.
+Plus: **PDF + DOCX + ODT** output, nine curated color themes, an **ATS-safe plain-text** export,
+a **cover-letter draft**, and an **auto-fit** layout that fills the pages it uses (no blank tail).
 
 ## Why it stands out
 
@@ -49,7 +50,8 @@ Restart Claude Code (or `/reload`), check `/skills`, then just ask:
 
 ```bash
 ./install.sh                                     # Playwright + Chromium (one-time)
-node scripts/build_resume.js --profile profile/sourabh.json --out output.pdf --html --ats --cover
+node scripts/build_resume.js --profile profile/sourabh.json --out output.pdf --all
+#   → output.pdf (designed) · output.docx · output.odt · output.ats.txt · output.cover.txt
 ```
 
 ## Quick start

@@ -9,18 +9,32 @@
   },
   "scripts": {
     "build": "node scripts/build_resume.js --profile profile/sourabh.json --out output.pdf --html",
-    "build:full": "node scripts/build_resume.js --profile profile/sourabh.json --out output.pdf --html --ats --cover",
+    "build:full": "node scripts/build_resume.js --profile profile/sourabh.json --out output.pdf --html --all",
     "score": "node scripts/lib/council.js --profile profile/sourabh.json",
     "themes": "node scripts/build_resume.js --list-themes",
     "templates": "node scripts/build_resume.js --list-templates"
   },
   "keywords": [
-    "resume", "cv", "pdf", "playwright", "chromium", "agent-skill",
-    "claude", "gemini", "ats", "resume-scoring", "resume-builder", "cover-letter"
+    "resume",
+    "cv",
+    "pdf",
+    "playwright",
+    "chromium",
+    "agent-skill",
+    "claude",
+    "gemini",
+    "ats",
+    "resume-scoring",
+    "resume-builder",
+    "cover-letter"
   ],
   "license": "MIT",
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
+    "docx": "^9.7.1",
+    "jszip": "^3.10.1",
     "playwright": "^1.60.0"
   }
 }

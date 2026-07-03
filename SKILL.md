@@ -82,11 +82,14 @@ a color spotlight strip of standout numbers (CGPA, projects, internships, awards
 skill bars, and a projects grid (a fresher's #1 differentiator). Lean into projects, awards,
 hackathons, and a crisp objective.
 
-### 4 — Render
+### 4 — Render (PDF · DOCX · ODT)
 ```bash
-node "$SKILL/scripts/build_resume.js" --profile ./<name>.json --out ./out.pdf --html --ats --cover
+node "$SKILL/scripts/build_resume.js" --profile ./<name>.json --out ./out.pdf --all
 ```
-Produces `out.pdf` (+ `out.html`, `out.ats.txt` plain-text for ATS, `out.cover.txt` draft).
+`--all` produces the designed **PDF** + editable **DOCX** + **ODT** + ATS-safe **text** +
+a **cover** draft (or pick with `--docx`/`--odt`/`--ats`/`--format docx,odt`). The PDF is
+**auto-fitted** — content is densified onto fewer pages or spacing is expanded to fill the
+pages used, so there is no big blank tail (disable with `--no-fit`; cap with `--max-pages`).
 
 ### 5 — Convene the Model Council
 The same command prints the council report. Also available standalone:
@@ -113,8 +116,11 @@ For judgement the code can't make, role-play the five personas yourself and read
 as each. Merge their notes with the rubric's `topFixes`. See `docs/model-council.md`.
 
 ### 8 — Deliver
-Hand over the PDF, and mention the ATS text + cover draft. Report the final council score and
-list anything still flagged in `_provenance` for the user to confirm.
+Export the formats the user needs — the designed **PDF** for humans, plus **DOCX** and **ODT**
+for editing/ATS and an **ATS-safe text** file. `--all` writes every format + a cover draft.
+The layout **auto-fits**: it densifies content onto fewer pages or expands spacing to fill the
+pages it uses, so there is never a big blank tail (override with `--no-fit` / `--max-pages N`).
+Report the final council score and list anything still flagged in `_provenance` to confirm.
 
 ---
 
@@ -159,8 +165,14 @@ node scripts/build_resume.js [options]
   --archetype <key>    Override archetype        (executive|academic|fresher|technical|general)
   --threshold <n>      Council pass mark         (default: 85)
   --html               Also write the HTML next to the PDF
+  --docx               Also write an editable Word .docx
+  --odt                Also write an editable OpenDocument .odt
   --ats                Also write an ATS-safe plain-text .ats.txt
   --cover              Also write a cover-letter draft .cover.txt
+  --all                PDF + DOCX + ODT + ATS + cover
+  --format a,b,c       Pick formats explicitly (docx,odt,ats)
+  --no-fit             Disable auto-fit (don't densify/expand to fill pages)
+  --max-pages <n>      Cap page count (auto-fit compresses to fit)
   --score-only         Classify + score, skip rendering (fast)
   --json               Emit classification + council as JSON
   --list-themes | --list-templates
@@ -222,7 +234,9 @@ premium-resume-studio/
 │       ├── council.js           # the Model Council rubric (CLI-runnable)
 │       ├── themes.js            # design-token palettes
 │       ├── helpers.js           # metric mining, verb/quant analysis, escaping
+│       ├── fit.js               # auto-fit: densify/expand so pages fill cleanly
 │       ├── browser.js           # robust Chromium launcher (finds installed build)
+│       ├── export/              # docx.js · odt.js · docmodel.js (editable formats)
 │       └── templates/           # executive · academic · fresher · general · _components
 ├── examples/
 │   ├── sourabh-resume.pdf/.html/.ats.txt/.cover.txt   # executive sample (score 90.6)

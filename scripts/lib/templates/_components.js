@@ -43,10 +43,10 @@ function baseCSS() {
   body{
     font-family:'Inter','Segoe UI','Helvetica Neue',Arial,'Liberation Sans',system-ui,sans-serif;
     color:var(--ink); background:var(--bg);
-    -webkit-font-smoothing:antialiased; font-size:10pt; line-height:1.45;
+    -webkit-font-smoothing:antialiased; font-size:9.7pt; line-height:1.38;
   }
   @page{ size:A4; margin:0; }
-  .sheet{ width:210mm; min-height:297mm; background:var(--bg); position:relative; }
+  .sheet{ width:210mm; min-height:290mm; background:var(--bg); position:relative; }
   h1,h2,h3,h4{ margin:0; }
   ul{ margin:0; }
   a{ color:inherit; text-decoration:none; }
@@ -59,7 +59,11 @@ function baseCSS() {
   }
   .accent{ color:var(--accent-deep); }
   .muted{ color:var(--ink-soft); }
-  section{ break-inside:avoid; }
+  /* Content flows freely across pages so the auto-fitter can fill each page
+     exactly (no break-inside shifts → continuous layout == printed layout).
+     Only a section title is kept with its first rows (no orphan title at a
+     page bottom); the fitter's slack absorbs that small shift. */
+  .sec-title{ break-after:avoid; }
   /* Sidebar shell (used by two-column templates) */
   .aside{
     background:linear-gradient(160deg,var(--side-from) 0%,var(--side-via) 55%,var(--side-to) 100%);
@@ -86,7 +90,7 @@ function baseCSS() {
     font-weight:700;margin:0 0 2.5mm 0;padding-bottom:1.4mm;display:flex;align-items:center;gap:1.6mm;
     border-bottom:1px solid rgba(var(--accent-rgb),0.42);
   }
-  .side-sec{ margin-bottom:5.5mm; }
+  .side-sec{ margin-bottom:4.4mm; }
   .contact-row{ display:flex; align-items:center; gap:2.4mm; font-size:8.6pt; margin-bottom:1.8mm; color:var(--side-ink); }
   .contact-row .ic{ color:var(--accent); }
   .side-line{ font-size:8.7pt; margin-bottom:1.4mm; color:var(--side-ink); }
