@@ -101,7 +101,8 @@ node scripts/build_resume.js --profile p.json --out out.pdf --theme royal-emeral
 node scripts/build_resume.js --list-designs      # all 138
 ```
 
-How selection works + the axes: [`docs/design-catalog.md`](docs/design-catalog.md).
+**Browse the [design gallery](examples/README.md)** — one profile shown in nine different
+designs. How selection works + the axes: [`docs/design-catalog.md`](docs/design-catalog.md).
 Tokens and re-skinning: [`docs/design-system.md`](docs/design-system.md).
 
 ## Use it from anywhere
