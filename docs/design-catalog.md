@@ -30,6 +30,22 @@ people and roles get different ones. Example — Sourabh (founder, IT/AI) →
 **#7 Graphite Azure Executive**; a finance CFO would land on a navy one; a designer on a
 coral header-band.
 
+## Design from the user's context
+
+Pass whatever the user says about the look to `--context "<text>"` and it steers the pick —
+layout family, palette, tone, and page count:
+
+```bash
+--context "minimalist, one page"      # → single-column, mono palette, capped to 1 page
+--context "bold creative"             # → header-band, coral/plum
+--context "conservative navy"         # → sober executive, navy palette
+--context "elegant premium dark"      # → noir-gold
+--context "two-column emerald"        # → sidebar layout, emerald palette
+```
+
+An explicitly named layout or palette **wins** over the profile-derived best fit; softer words
+(tone, industry) just tilt the ranking. Parsing lives in `parseContext()` (`design/select.js`).
+
 ## Exploring and overriding
 
 ```bash

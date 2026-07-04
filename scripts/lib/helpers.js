@@ -27,15 +27,18 @@ const PLACEHOLDER_RE = /(pending|tbd|to be confirmed|unknown|xxxx|placeholder|co
 const isPlaceholder = (v) => v == null || (typeof v === 'string' && (v.trim() === '' || PLACEHOLDER_RE.test(v)));
 
 /** Strong action verbs that signal impact-oriented bullets. */
+// Plain, strong verbs. Deliberately excludes the resume-cliché verbs
+// (spearheaded, orchestrated, pioneered, championed, leveraged, harnessed) so
+// the council never rewards slop — the humanVoice check penalizes those.
 const ACTION_VERBS = new Set(
   (
-    'led built scaled drove delivered launched founded architected designed created ' +
-    'grew increased reduced saved generated managed directed spearheaded established ' +
-    'transformed streamlined optimized negotiated secured won closed shipped owned ' +
-    'developed implemented deployed orchestrated pioneered mentored coached hired ' +
+    'led built scaled drove delivered launched founded designed created ran ' +
+    'grew increased reduced saved generated managed directed established ' +
+    'streamlined negotiated secured won closed shipped owned rebuilt cut ' +
+    'developed implemented deployed mentored coached hired trained ' +
     'expanded turned accelerated automated engineered produced published presented ' +
-    'awarded achieved exceeded raised acquired onboarded coordinated executed initiated ' +
-    'championed overhauled consolidated restructured'
+    'awarded achieved exceeded raised acquired onboarded coordinated executed started ' +
+    'overhauled consolidated restructured fixed doubled tripled'
   ).split(/\s+/),
 );
 

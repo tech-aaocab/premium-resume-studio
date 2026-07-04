@@ -18,6 +18,7 @@ const {
   wordCount,
   WEAK_OPENERS,
 } = require('./helpers');
+const { lintProfile } = require('./humanize');
 
 const clamp = (n, lo = 0, hi = 100) => Math.max(lo, Math.min(hi, n));
 
@@ -83,6 +84,17 @@ const DIMENSIONS = {
     if (strong / bullets.length < 0.6) fixes.push(`Start more bullets with strong verbs (Led, Scaled, Built…) — ${strong}/${bullets.length} do now.`);
     if (weak) fixes.push(`Rewrite ${weak} passive opener(s) ("responsible for", "worked on").`);
     return { score: clamp(score), weight: 10, notes: [`${strong} strong / ${weak} weak openers`], fixes };
+  },
+
+  humanVoice(p) {
+    const { score, counts } = lintProfile(p);
+    const fixes = [];
+    if (counts.cliche) fixes.push(`Cut ${counts.cliche} cliché(s) (results-driven, human-centric, "ready for the future"…) — say the specific thing instead.`);
+    if (counts.buzz) fixes.push(`Replace ${counts.buzz} buzzword(s) (leverage, spearheaded, utilize, seamless…) with plain verbs.`);
+    if (counts.soup) fixes.push(`Break up ${counts.soup} keyword-soup list(s) into a real sentence about what you did.`);
+    if (counts.filler) fixes.push(`Remove ${counts.filler} filler phrase(s) ("responsible for", "various", "a range of").`);
+    if (counts.uniform) fixes.push('Vary how bullets open — too many start with the same verb, which reads templated.');
+    return { score, weight: 14, notes: [`${counts.cliche} clichés, ${counts.buzz} buzzwords, ${counts.soup} soup`], fixes };
   },
 
   completeness(p, ctx) {
@@ -181,11 +193,11 @@ const DIMENSIONS = {
 
 // Persona lenses: each is a weighted blend over the dimensions.
 const PERSONAS = [
-  { name: 'Executive Recruiter', w: { impact: 3, positioning: 2, actionVerbs: 2, brevity: 1, credibility: 2 } },
+  { name: 'Executive Recruiter', w: { impact: 3, positioning: 2, actionVerbs: 2, humanVoice: 3, credibility: 2 } },
   { name: 'ATS Parser Bot', w: { atsCoverage: 4, completeness: 2, contactability: 2, credibility: 1 } },
-  { name: 'Domain Expert', w: { impact: 3, completeness: 3, actionVerbs: 1, credibility: 2 } },
+  { name: 'Domain Expert', w: { impact: 3, completeness: 3, humanVoice: 2, credibility: 2 } },
   { name: 'Design Critic', w: { designFit: 4, brevity: 2, positioning: 1, standout: 2 } },
-  { name: 'Hiring CEO', w: { impact: 3, standout: 2, positioning: 2, credibility: 2, brevity: 1 } },
+  { name: 'Hiring CEO', w: { impact: 3, standout: 2, positioning: 2, humanVoice: 3, credibility: 2 } },
 ];
 
 function personaComment(name, score, dims) {

@@ -61,6 +61,7 @@ palettes/typography. Open the PNGs side by side to confirm.
 
 ```
 --profile <path>   profile JSON            (default: profile/sourabh.json)
+--context "<text>" steer design from the user's words ("minimalist", "bold navy one-pager")
 --design <id|n>    force a catalog design  (e.g. --design header-band-ocean-coral-sans)
 --variant <n>      Nth structurally-different design (1 = best fit)
 --random           random on-brand design

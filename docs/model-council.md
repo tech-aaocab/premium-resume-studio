@@ -20,6 +20,7 @@ node scripts/lib/council.js --profile profile/sourabh.json --json   # machine-re
 | Dimension | Weight | What it rewards |
 |-----------|:------:|-----------------|
 | `impact` | 18 | Bullets carrying a number / % / ₹$ / scale; 3–4 hero metrics |
+| `humanVoice` | 14 | Reads like a person, not AI — **penalizes** clichés, buzz-verbs, keyword-soup, filler, uniform bullet openers (see `scripts/lib/humanize.js`, runnable standalone) |
 | `completeness` | 12 | The sections expected for the detected archetype |
 | `positioning` | 10 | A sharp, well-sized headline + a summary |
 | `actionVerbs` | 10 | Bullets that open with strong verbs; penalizes "responsible for" |

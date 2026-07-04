@@ -71,6 +71,7 @@ const PAGE_PX = 1122.5;
     design: arg('--design', null),
     variant: arg('--variant', null) ? parseInt(arg('--variant', null), 10) : null,
     random: has('--random'),
+    context: arg('--context', null),
   });
   const d = sel.design;
   const design = { theme: d.theme, type: d.type, ornaments: d.ornaments, family: d.family };

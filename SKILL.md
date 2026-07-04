@@ -65,6 +65,27 @@ Look the person up and **enrich only with what you can verify**:
 - **Never invent** dates, metrics, employers, or institutions. Tag anything unverified in a
   `_provenance` block and surface it to the user for confirmation — do not silently assert it.
 
+### 2.5 — Write like a human (no AI slop)
+A resume that reads as machine-written kills credibility. Write plain, specific, first-hand
+copy — the way the person would actually describe their work.
+
+- **Ban the clichés:** results-driven, detail-oriented, team player, passionate about, proven
+  track record, thought leader, best-in-class, cutting-edge, world-class, "ready for the future",
+  human-centric, synergy, move the needle, wear many hats.
+- **Ban the buzz-verbs:** leverage, spearheaded, orchestrated, championed, utilize, harness,
+  seamless, robust, empower, elevate, showcase, delve. Use plain verbs (built, ran, grew, cut, won).
+- **No keyword-soup.** "…spanning system integration, data-centre O&M, POS deployment,
+  e-governance and digital transformation" is a word-pile, not a sentence. Say what they *did*:
+  "kept POS networks and government e-governance projects running across India."
+- **Vary the bullets.** Don't start five in a row with the same verb. Prefer concrete detail
+  ("cut page-load 35% by lazy-loading") over generic scale claims.
+
+Check it — the linter scores 0–100 and lists every offender:
+```bash
+node "$REPO/scripts/lib/humanize.js" --profile ./<name>.json
+```
+The Model Council also weights a **humanVoice** dimension, so slop drops the score until fixed.
+
 ### 3 — Classify + pick a design (automatic)
 ```bash
 node "$REPO/scripts/build_resume.js" --profile ./<name>.json --score-only
@@ -74,8 +95,13 @@ The banner prints the chosen **archetype**, **seniority**, **fresher?** flag, an
 **reproducible**: it filters to designs that fit the archetype, then scores by seniority
 (executives → sober/formal; freshers → bold) and industry (tech → graphite/steel, finance →
 navy/emerald, creative → coral/plum, academia → serif navy…). Same profile → same design;
-different people/roles → different designs. Explore with `--variant N` / `--random`, force one
-with `--design <id|n>`, or force just the palette with `--theme`. See
+different people/roles → different designs.
+
+**Design from the user's own words.** Whatever they say about the look — "minimalist",
+"conservative navy", "bold creative one-pager", "elegant and dark", "for a fintech role",
+"two-column emerald" — pass it verbatim to `--context "<their words>"`. It steers layout,
+palette, tone, and page count (e.g. "one page" → `--max-pages 1`). Explore with `--variant N` /
+`--random`, force one with `--design <id|n>`, or force just the palette with `--theme`. See
 [`docs/design-catalog.md`](docs/design-catalog.md); list all with `--list-designs`.
 
 Layout families and who they suit:
@@ -172,6 +198,7 @@ Full field reference: `profile/README.md`. JSON Schema: `profile/schema.json`.
 node scripts/build_resume.js [options]
   --profile <path>     Profile JSON              (default: profile/sourabh.json)
   --out <path>         Output PDF                (default: output.pdf)
+  --context "<text>"   Steer the design from the user's words (tone/palette/layout/pages)
   --design <id|n>      Force a specific design   (see --list-designs; 138 models)
   --variant <n>        Nth-best-fitting design    (explore alternatives)
   --random             Random on-brand design
