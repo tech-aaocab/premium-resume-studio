@@ -67,7 +67,24 @@ function fittingList(classification, profile) {
   const scored = pool.map((e) => ({ e, s: scoreEntry(e, ctx) }));
   // Deterministic: score desc, then catalog order (id) asc.
   scored.sort((a, b) => (b.s - a.s) || (a.e.n - b.e.n));
-  return { ctx, list: scored.map((x) => x.e) };
+
+  // Interleave by LAYOUT FAMILY so consecutive designs are structurally
+  // different, not just recolored. Families are ordered by their best score, so
+  // list[0] stays the overall best fit; list[1], list[2]… are different layouts.
+  const byFamily = new Map();
+  for (const x of scored) {
+    if (!byFamily.has(x.e.family)) byFamily.set(x.e.family, []);
+    byFamily.get(x.e.family).push(x.e);
+  }
+  const families = [...byFamily.keys()]; // insertion order = best-score order
+  const woven = [];
+  for (let round = 0; woven.length < scored.length; round++) {
+    for (const fam of families) {
+      const arr = byFamily.get(fam);
+      if (arr[round]) woven.push(arr[round]);
+    }
+  }
+  return { ctx, list: woven };
 }
 
 function findById(ref) {

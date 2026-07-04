@@ -39,15 +39,19 @@ The Studio is opinionated about quality. It does four things on its own:
 > This is the loop the skill is built around. Run it whenever asked to build/upgrade a resume.
 > **Do not stop until the Model Council score is ≥ 85.**
 
-> **Where the scripts live (global / plugin installs).** When this skill is installed globally
-> (`~/.claude/skills/…`) or as a plugin, your working directory is the *user's project*, not the
-> skill folder. Resolve the skill's own path first and call scripts through it:
+> **Where the scripts live (portable across Claude Code / plugin / Gemini / clone).** The
+> renderer lives under the repo, which may not be your working directory. Resolve it once by
+> walking up from the skill/plugin dir (or `$PWD`) until `scripts/build_resume.js` appears —
+> this works whether installed globally, as a plugin, discovered in-repo, or run from a clone
+> (Gemini): 
 > ```bash
-> SKILL="${CLAUDE_SKILL_DIR:-${CLAUDE_PLUGIN_ROOT:-$PWD}}"   # Claude Code sets these
-> node "$SKILL/scripts/build_resume.js" --profile ./my-profile.json --out ./resume.pdf --html --ats
+> REPO="${CLAUDE_PLUGIN_ROOT:-${CLAUDE_SKILL_DIR:-$PWD}}"
+> while [ "$REPO" != "/" ] && [ ! -f "$REPO/scripts/build_resume.js" ]; do REPO="$(dirname "$REPO")"; done
+> [ -f "$REPO/scripts/build_resume.js" ] || REPO="$PWD"    # fallback: run from inside the repo
+> node "$REPO/scripts/build_resume.js" --profile ./my-profile.json --out ./resume.pdf --all
 > ```
 > Keep the **profile JSON in the user's project** (e.g. `./my-profile.json`); the scripts and
-> sample profiles live under `$SKILL`. The examples below use `$SKILL` for that reason.
+> sample profiles live under `$REPO`. The examples below use `$REPO` for that reason.
 
 ### 1 — Load / build the profile
 Read the JSON profile (`profile/<name>.json`; schema in `profile/README.md`). If the user
@@ -63,7 +67,7 @@ Look the person up and **enrich only with what you can verify**:
 
 ### 3 — Classify + pick a design (automatic)
 ```bash
-node "$SKILL/scripts/build_resume.js" --profile ./<name>.json --score-only
+node "$REPO/scripts/build_resume.js" --profile ./<name>.json --score-only
 ```
 The banner prints the chosen **archetype**, **seniority**, **fresher?** flag, and the
 **design model** picked from a **138-design catalog**. Selection is context-aware and
@@ -89,14 +93,9 @@ a color spotlight strip of standout numbers (CGPA, projects, internships, awards
 skill bars, and a projects grid (a fresher's #1 differentiator). Lean into projects, awards,
 hackathons, and a crisp objective.
 
-**Freshers get special treatment** — the layout is engineered to be *noticed*: a bold hero,
-a color spotlight strip of standout numbers (CGPA, projects, internships, awards), leveled
-skill bars, and a projects grid (a fresher's #1 differentiator). Lean into projects, awards,
-hackathons, and a crisp objective.
-
 ### 4 — Render (PDF · DOCX · ODT)
 ```bash
-node "$SKILL/scripts/build_resume.js" --profile ./<name>.json --out ./out.pdf --all
+node "$REPO/scripts/build_resume.js" --profile ./<name>.json --out ./out.pdf --all
 ```
 `--all` produces the designed **PDF** + editable **DOCX** + **ODT** + ATS-safe **text** +
 a **cover** draft (or pick with `--docx`/`--odt`/`--ats`/`--format docx,odt`). The PDF is
@@ -106,8 +105,8 @@ pages used, so there is no big blank tail (disable with `--no-fit`; cap with `--
 ### 5 — Convene the Model Council
 The same command prints the council report. Also available standalone:
 ```bash
-node "$SKILL/scripts/lib/council.js" --profile ./<name>.json          # human report
-node "$SKILL/scripts/lib/council.js" --profile ./<name>.json --json   # machine-readable
+node "$REPO/scripts/lib/council.js" --profile ./<name>.json          # human report
+node "$REPO/scripts/lib/council.js" --profile ./<name>.json --json   # machine-readable
 ```
 It returns an **absolute score**, ten rubric dimensions, five reviewer **personas**
 (Executive Recruiter, ATS Bot, Domain Expert, Design Critic, Hiring CEO), and **ranked fixes**.
