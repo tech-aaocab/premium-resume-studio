@@ -43,7 +43,7 @@ function baseCSS() {
   *,*::before,*::after{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
-    font-family:var(--font-body,'Inter','Segoe UI','Helvetica Neue',Arial,'Liberation Sans',system-ui,sans-serif);
+    font-family:var(--font-body,Calibri,Carlito,'Inter','Segoe UI',Arial,'Liberation Sans',system-ui,sans-serif);
     color:var(--ink); background:var(--bg);
     -webkit-font-smoothing:antialiased; font-size:9.7pt; line-height:1.38;
   }
