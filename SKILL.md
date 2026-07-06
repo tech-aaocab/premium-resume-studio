@@ -39,15 +39,19 @@ The Studio is opinionated about quality. It does four things on its own:
 > This is the loop the skill is built around. Run it whenever asked to build/upgrade a resume.
 > **Do not stop until the Model Council score is ≥ 85.**
 
-> **Where the scripts live (global / plugin installs).** When this skill is installed globally
-> (`~/.claude/skills/…`) or as a plugin, your working directory is the *user's project*, not the
-> skill folder. Resolve the skill's own path first and call scripts through it:
+> **Where the scripts live (portable across Claude Code / plugin / Gemini / clone).** The
+> renderer lives under the repo, which may not be your working directory. Resolve it once by
+> walking up from the skill/plugin dir (or `$PWD`) until `scripts/build_resume.js` appears —
+> this works whether installed globally, as a plugin, discovered in-repo, or run from a clone
+> (Gemini): 
 > ```bash
-> SKILL="${CLAUDE_SKILL_DIR:-${CLAUDE_PLUGIN_ROOT:-$PWD}}"   # Claude Code sets these
-> node "$SKILL/scripts/build_resume.js" --profile ./my-profile.json --out ./resume.pdf --html --ats
+> REPO="${CLAUDE_PLUGIN_ROOT:-${CLAUDE_SKILL_DIR:-$PWD}}"
+> while [ "$REPO" != "/" ] && [ ! -f "$REPO/scripts/build_resume.js" ]; do REPO="$(dirname "$REPO")"; done
+> [ -f "$REPO/scripts/build_resume.js" ] || REPO="$PWD"    # fallback: run from inside the repo
+> node "$REPO/scripts/build_resume.js" --profile ./my-profile.json --out ./resume.pdf --all
 > ```
 > Keep the **profile JSON in the user's project** (e.g. `./my-profile.json`); the scripts and
-> sample profiles live under `$SKILL`. The examples below use `$SKILL` for that reason.
+> sample profiles live under `$REPO`. The examples below use `$REPO` for that reason.
 
 ### 1 — Load / build the profile
 Read the JSON profile (`profile/<name>.json`; schema in `profile/README.md`). If the user
@@ -61,17 +65,43 @@ Look the person up and **enrich only with what you can verify**:
 - **Never invent** dates, metrics, employers, or institutions. Tag anything unverified in a
   `_provenance` block and surface it to the user for confirmation — do not silently assert it.
 
+### 2.5 — Write like a human (no AI slop)
+A resume that reads as machine-written kills credibility. Write plain, specific, first-hand
+copy — the way the person would actually describe their work.
+
+- **Ban the clichés:** results-driven, detail-oriented, team player, passionate about, proven
+  track record, thought leader, best-in-class, cutting-edge, world-class, "ready for the future",
+  human-centric, synergy, move the needle, wear many hats.
+- **Ban the buzz-verbs:** leverage, spearheaded, orchestrated, championed, utilize, harness,
+  seamless, robust, empower, elevate, showcase, delve. Use plain verbs (built, ran, grew, cut, won).
+- **No keyword-soup.** "…spanning system integration, data-centre O&M, POS deployment,
+  e-governance and digital transformation" is a word-pile, not a sentence. Say what they *did*:
+  "kept POS networks and government e-governance projects running across India."
+- **Vary the bullets.** Don't start five in a row with the same verb. Prefer concrete detail
+  ("cut page-load 35% by lazy-loading") over generic scale claims.
+
+Check it — the linter scores 0–100 and lists every offender:
+```bash
+node "$REPO/scripts/lib/humanize.js" --profile ./<name>.json
+```
+The Model Council also weights a **humanVoice** dimension, so slop drops the score until fixed.
+
 ### 3 — Classify + pick a design (automatic)
 ```bash
-node "$SKILL/scripts/build_resume.js" --profile ./<name>.json --score-only
+node "$REPO/scripts/build_resume.js" --profile ./<name>.json --score-only
 ```
 The banner prints the chosen **archetype**, **seniority**, **fresher?** flag, and the
 **design model** picked from a **138-design catalog**. Selection is context-aware and
 **reproducible**: it filters to designs that fit the archetype, then scores by seniority
 (executives → sober/formal; freshers → bold) and industry (tech → graphite/steel, finance →
 navy/emerald, creative → coral/plum, academia → serif navy…). Same profile → same design;
-different people/roles → different designs. Explore with `--variant N` / `--random`, force one
-with `--design <id|n>`, or force just the palette with `--theme`. See
+different people/roles → different designs.
+
+**Design from the user's own words.** Whatever they say about the look — "minimalist",
+"conservative navy", "bold creative one-pager", "elegant and dark", "for a fintech role",
+"two-column emerald" — pass it verbatim to `--context "<their words>"`. It steers layout,
+palette, tone, and page count (e.g. "one page" → `--max-pages 1`). Explore with `--variant N` /
+`--random`, force one with `--design <id|n>`, or force just the palette with `--theme`. See
 [`docs/design-catalog.md`](docs/design-catalog.md); list all with `--list-designs`.
 
 Layout families and who they suit:
@@ -89,14 +119,9 @@ a color spotlight strip of standout numbers (CGPA, projects, internships, awards
 skill bars, and a projects grid (a fresher's #1 differentiator). Lean into projects, awards,
 hackathons, and a crisp objective.
 
-**Freshers get special treatment** — the layout is engineered to be *noticed*: a bold hero,
-a color spotlight strip of standout numbers (CGPA, projects, internships, awards), leveled
-skill bars, and a projects grid (a fresher's #1 differentiator). Lean into projects, awards,
-hackathons, and a crisp objective.
-
 ### 4 — Render (PDF · DOCX · ODT)
 ```bash
-node "$SKILL/scripts/build_resume.js" --profile ./<name>.json --out ./out.pdf --all
+node "$REPO/scripts/build_resume.js" --profile ./<name>.json --out ./out.pdf --all
 ```
 `--all` produces the designed **PDF** + editable **DOCX** + **ODT** + ATS-safe **text** +
 a **cover** draft (or pick with `--docx`/`--odt`/`--ats`/`--format docx,odt`). The PDF is
@@ -106,8 +131,8 @@ pages used, so there is no big blank tail (disable with `--no-fit`; cap with `--
 ### 5 — Convene the Model Council
 The same command prints the council report. Also available standalone:
 ```bash
-node "$SKILL/scripts/lib/council.js" --profile ./<name>.json          # human report
-node "$SKILL/scripts/lib/council.js" --profile ./<name>.json --json   # machine-readable
+node "$REPO/scripts/lib/council.js" --profile ./<name>.json          # human report
+node "$REPO/scripts/lib/council.js" --profile ./<name>.json --json   # machine-readable
 ```
 It returns an **absolute score**, ten rubric dimensions, five reviewer **personas**
 (Executive Recruiter, ATS Bot, Domain Expert, Design Critic, Hiring CEO), and **ranked fixes**.
@@ -173,6 +198,7 @@ Full field reference: `profile/README.md`. JSON Schema: `profile/schema.json`.
 node scripts/build_resume.js [options]
   --profile <path>     Profile JSON              (default: profile/sourabh.json)
   --out <path>         Output PDF                (default: output.pdf)
+  --context "<text>"   Steer the design from the user's words (tone/palette/layout/pages)
   --design <id|n>      Force a specific design   (see --list-designs; 138 models)
   --variant <n>        Nth-best-fitting design    (explore alternatives)
   --random             Random on-brand design

@@ -92,19 +92,31 @@ that reads the SKILL.md format will run the classify → render → council loop
 
 ---
 
-## How the skill finds its scripts
+## Discovery
 
-When installed globally or as a plugin, the agent's working directory is your *project*, not the
-skill folder — so `SKILL.md` resolves the skill's own path before shelling out:
+Cloning the repo is enough for Claude Code to see the skill: it ships a discoverable
+`.claude/skills/premium-resume-studio/` (and `.claude/skills/run-premium-resume-studio/` for the
+render+screenshot+score harness). Open the folder in Claude Code and `/skills` lists both.
+`install-skill.sh` additionally makes it **global** (every project); the plugin ships its skill
+under `skills/`.
+
+## How the skill finds its scripts (portable)
+
+The renderer lives under the repo, which may not be your working directory. `SKILL.md` resolves
+it by **walking up** from the skill/plugin dir (or `$PWD`) until `scripts/build_resume.js`
+appears — so it works when installed globally, as a plugin, discovered in-repo, or run from a
+clone (including Gemini CLI run from inside the repo):
 
 ```bash
-SKILL="${CLAUDE_SKILL_DIR:-${CLAUDE_PLUGIN_ROOT:-$PWD}}"
-node "$SKILL/scripts/build_resume.js" --profile ./my-profile.json --out ./resume.pdf --html --ats
+REPO="${CLAUDE_PLUGIN_ROOT:-${CLAUDE_SKILL_DIR:-$PWD}}"
+while [ "$REPO" != "/" ] && [ ! -f "$REPO/scripts/build_resume.js" ]; do REPO="$(dirname "$REPO")"; done
+[ -f "$REPO/scripts/build_resume.js" ] || REPO="$PWD"     # fallback: run from inside the repo
+node "$REPO/scripts/build_resume.js" --profile ./my-profile.json --out ./resume.pdf --all
 ```
 
-Claude Code sets `CLAUDE_SKILL_DIR` (skill installs) and `CLAUDE_PLUGIN_ROOT` (plugin installs);
-the fallback keeps it working when you run from the repo directly. Keep your **profile JSON in
-your project**; the scripts and sample profiles live under the skill.
+Keep your **profile JSON in your project**; scripts and sample profiles live under `$REPO`. If a
+host sets no skill/plugin variables (some Gemini setups), run from inside the clone or use the
+[render service](#5-gemini-cli) so `$REPO` resolves.
 
 ## Verify the install
 

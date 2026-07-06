@@ -79,6 +79,7 @@ const selection = selectDesign(cls, p, {
   design: arg('--design', null),
   variant: arg('--variant', null) ? parseInt(arg('--variant', null), 10) : null,
   random: flag('--random'),
+  context: arg('--context', null),
 });
 const chosen = selection.design;
 // --theme forces the palette on top of the chosen design.
@@ -166,7 +167,7 @@ async function renderPdf(html, outAbs, { fit = true, maxPages = null } = {}) {
   let pages = null;
   if (!SCORE_ONLY) {
     if (ALSO_HTML) fs.writeFileSync(outAbs.replace(/\.pdf$/i, '.html'), html);
-    const res = await renderPdf(html, outAbs, { fit: !NO_FIT, maxPages: MAX_PAGES });
+    const res = await renderPdf(html, outAbs, { fit: !NO_FIT, maxPages: MAX_PAGES || selection.maxPages });
     pages = res.pages;
     const kb = Math.round(fs.statSync(outAbs).size / 1024);
     console.log(`\n  ✅ PDF   : ${outAbs}  (${pages} page${pages > 1 ? 's' : ''}, ${kb} KB, design: ${chosen.name}, ${res.scale})`);

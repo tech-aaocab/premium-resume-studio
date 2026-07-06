@@ -3,3 +3,5 @@ output.*
 *.log
 .DS_Store
 examples/_preview.html
+.claude/skills/*/out/
+.claude/skills/*/out*/
